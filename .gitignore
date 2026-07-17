@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+venv/
+env/
+*.env
+
+# IDE & Office Temp Files
+.vscode/
+.idea/
+~$*
+*.tmp

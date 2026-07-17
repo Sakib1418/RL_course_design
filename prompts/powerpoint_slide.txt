@@ -1,0 +1,16 @@
+Make a white slide with plain text only in pptx for planning and brainstorming only, add contentst as relevant. 
+
+The topic is found at - C:\Users\15156\OneDrive - Iowa State University\Documents\RL_course_design\abstract.txt
+
+There will be 10 slides, right now just plan the content as points, dont make content. 
+
+1. scope of the problem: add points from abstract as overview
+2. what is vibe coding, how it changed the paradigm
+3. what is reinforcement learning 
+4. what can be a reinforcement learning, what cannot be; how to differentiate problems
+5. an example of reinforcement learning with snake game description
+6. a coded up RL bioprocess environment 
+7. How to use vibe coding, how to and how not to do it - information rich slide 
+8. Our proposed platform - walkthrough 
+9. steps of converting a problem to an RL problem; what you need before 
+10. conclusion

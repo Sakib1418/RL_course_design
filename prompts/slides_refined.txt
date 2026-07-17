@@ -1,0 +1,565 @@
+# Refined Prompt: Planning Deck for "Reinforcement Learning for Chemical Engineers: Vignettes and Vibe Coding"
+
+## Objective
+
+Create a **PowerPoint (.pptx)** that serves **only as a planning and brainstorming document** for developing a future conference presentation.
+
+This is **NOT** the final presentation.
+
+The goal is to organize ideas, identify missing pieces, and create a logical narrative flow. Every slide should contain only **bullet points, placeholders, planning notes, possible figures to include, and questions to answer later.**
+
+Do **not** write polished presentation text or speaker notes.
+
+---
+
+## Input Material
+
+The primary source document is located at:
+
+`C:\Users\15156\OneDrive - Iowa State University\Documents\RL_course_design\abstract.txt`
+
+The presentation should primarily derive its structure and major talking points from this abstract.
+
+You may also incorporate generally accepted knowledge about:
+
+* Reinforcement Learning
+* Chemical Engineering process control
+* OpenAI Gym / Gymnasium
+* Stable Baselines3
+* AI coding assistants
+* LLM-assisted programming
+* Vibe Coding
+* Educational pedagogy
+* Interactive learning
+* Digital twins
+* Process optimization
+
+Do **not** invent claims that are unsupported by the abstract.
+
+---
+
+# Presentation Requirements
+
+Produce a PowerPoint with exactly **10 slides**.
+
+Use a **minimal brainstorming style**.
+
+Formatting:
+
+* Plain white background
+* Black text only
+* No graphics
+* No icons
+* No SmartArt
+* No animations
+* No decorative elements
+* Large readable titles
+* Bullet points only
+* Nested bullets are encouraged
+* Leave placeholders wherever future figures or demos will go
+
+Each slide should contain:
+
+* Main ideas
+* Subtopics
+* Potential figures
+* Possible demonstrations
+* Questions that still need answering
+* Logical flow into the next slide
+
+Think of this as an outline for a future polished presentation.
+
+---
+
+# Presentation Title
+
+**Reinforcement Learning for Chemical Engineers: Vignettes and Vibe Coding**
+
+---
+
+# Slide-by-Slide Planning
+
+---
+
+## Slide 1
+
+### Scope of the Problem
+
+Purpose:
+
+Convince the audience why this work is important.
+
+Planning bullets should include:
+
+* Why RL matters
+* Why sequential decision making matters
+* Chemical engineering examples
+* Process control
+* Fermentation optimization
+* Resource scheduling
+* Reaction optimization
+* Current state of RL adoption
+* Existing educational gap
+* Software barriers
+* Programming barriers
+* RL ecosystem complexity
+* Motivation for this work
+* Key message to leave audience with
+
+Possible figure placeholder:
+
+* Traditional ChE workflow vs RL-enabled workflow
+
+---
+
+## Slide 2
+
+### What is Vibe Coding?
+
+Planning bullets:
+
+* Definition
+* Origin of the term
+* LLM-assisted software development
+* Natural language → executable code
+* Iterative prompting
+* Human-AI collaboration
+* Why it changes software development
+* Why it matters specifically for engineers
+* Democratization of programming
+* Lower barrier to experimentation
+
+Potential comparison:
+
+Traditional coding
+
+↓
+
+Prompt-driven development
+
+Possible figure:
+
+Timeline of software development evolution.
+
+---
+
+## Slide 3
+
+### What is Reinforcement Learning?
+
+Planning bullets:
+
+Introduce
+
+* Agent
+* Environment
+* State
+* Action
+* Reward
+* Policy
+* Episode
+* Exploration
+* Exploitation
+
+Explain
+
+* Learning through interaction
+* Difference from supervised learning
+* Difference from optimization
+* Difference from regression
+* Trial-and-error learning
+
+Possible figure placeholder:
+
+Classic RL interaction loop
+
+Agent ↔ Environment
+
+---
+
+## Slide 4
+
+### What Problems Can Be Formulated as RL?
+
+Purpose:
+
+Teach audience how to recognize RL problems.
+
+Planning bullets:
+
+Characteristics of RL problems
+
+* Sequential decisions
+* Delayed rewards
+* Dynamic environment
+* State transitions
+* Multiple decisions over time
+* Feedback loop
+
+Problems that are NOT RL
+
+* Static prediction
+* One-time optimization
+* Regression
+* Classification
+* Parameter estimation
+
+Decision tree:
+
+"Is this an RL problem?"
+
+Potential examples
+
+Chemical engineering examples
+
+Industrial examples
+
+Daily life examples
+
+---
+
+## Slide 5
+
+### RL Example: Snake Game
+
+Purpose
+
+Introduce RL intuitively.
+
+Planning bullets
+
+Game description
+
+Agent
+
+Environment
+
+Possible actions
+
+Rewards
+
+Penalties
+
+Learning objective
+
+State representation
+
+Why Snake is an ideal RL example
+
+Potential demonstration
+
+Possible screenshots
+
+Bridge to engineering applications
+
+---
+
+## Slide 6
+
+### RL Example: Vibe-Coded Bioprocess Environment
+
+Purpose
+
+Transition from games to engineering.
+
+Planning bullets
+
+Bioprocess description
+
+State variables
+
+Examples
+
+* Biomass
+* Substrate
+* Product
+* Dissolved oxygen
+
+Actions
+
+Examples
+
+* Feed rate
+* Aeration
+* Agitation
+
+Reward function
+
+Constraints
+
+Simulation environment
+
+Training process
+
+Expected learned behavior
+
+Industrial relevance
+
+Potential live demo
+
+Potential architecture figure
+
+---
+
+## Slide 7
+
+### Vibe Coding in Practice
+
+Title suggestion
+
+**How to Use Vibe Coding (and How NOT to Use It)**
+
+This should become one of the richest slides.
+
+Planning bullets
+
+Good prompting practices
+
+Breaking problems into modules
+
+Iterative refinement
+
+Testing every generated component
+
+Version control
+
+Debugging with AI
+
+Verification
+
+Validation
+
+Human oversight
+
+Common mistakes
+
+Blind trust
+
+Massive prompts
+
+No testing
+
+Ignoring hallucinations
+
+Ignoring assumptions
+
+Poor modularization
+
+Potential workflow
+
+Idea
+
+↓
+
+Prompt
+
+↓
+
+Prototype
+
+↓
+
+Test
+
+↓
+
+Refine
+
+↓
+
+Deploy
+
+Potential resources
+
+Claude
+
+ChatGPT
+
+GitHub Copilot
+
+Cursor
+
+Windsurf
+
+---
+
+## Slide 8
+
+### Our Proposed Platform
+
+Purpose
+
+Introduce the contribution.
+
+Planning bullets
+
+Natural language input
+
+↓
+
+Problem understanding
+
+↓
+
+Automatic RL environment generation
+
+↓
+
+Training code generation
+
+↓
+
+Simulation
+
+↓
+
+Visualization
+
+↓
+
+Policy evaluation
+
+↓
+
+Deployment
+
+Discuss
+
+Architecture
+
+Inputs
+
+Outputs
+
+Target users
+
+Extensibility
+
+Future capabilities
+
+Possible architecture diagram placeholder
+
+---
+
+## Slide 9
+
+### Converting a Chemical Engineering Problem into an RL Problem
+
+Purpose
+
+Provide a practical framework.
+
+Planning bullets
+
+Step-by-step workflow
+
+Identify objective
+
+Define environment
+
+Define states
+
+Define actions
+
+Define rewards
+
+Identify constraints
+
+Simulation availability
+
+Termination criteria
+
+Training algorithm
+
+Evaluation metrics
+
+Deployment considerations
+
+Potential checklist
+
+"What you need before starting"
+
+Possible flowchart placeholder
+
+---
+
+## Slide 10
+
+### Conclusion
+
+Planning bullets
+
+Main takeaways
+
+Educational impact
+
+Industrial impact
+
+Why now
+
+How LLMs lower barriers
+
+Future work
+
+Platform expansion
+
+Broader AI literacy
+
+Call to action
+
+Questions
+
+Potential final figure
+
+Roadmap
+
+---
+
+# General Guidance
+
+The presentation should tell a coherent story:
+
+Problem
+
+↓
+
+Why current approaches fail
+
+↓
+
+Introduce RL
+
+↓
+
+Teach intuition
+
+↓
+
+Introduce vibe coding
+
+↓
+
+Show engineering examples
+
+↓
+
+Present the proposed platform
+
+↓
+
+Provide a practical methodology
+
+↓
+
+Conclude with educational and industrial impact
+
+The overall tone should be that of a modern AI education talk for chemical engineers attending a conference.
+
+Do not overpopulate slides.
+
+Aim for approximately **8–15 planning bullets per slide**, with logical sub-bullets where appropriate.
+
+Focus on identifying what each slide should eventually communicate rather than writing polished presentation content.
+
+The final deliverable should be a clean **.pptx brainstorming deck** that can later be expanded into a full conference presentation.
+
