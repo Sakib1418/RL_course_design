@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 6: Humans in the loop, evidence on the table · Agentic AI for Process Operations</title>
+<meta name="description" content="Accept or override, decisions as training data, evaluation, safety and governance.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 6: Humans in the loop, evidence on the table · Agentic AI for Process Operations">
+<meta property="og:description" content="Accept or override, decisions as training data, evaluation, safety and governance.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/week-6.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-agent"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Agentic AI for Process Operations</a> / Week 6</p>
+  <p class="kicker">Week 6 <span class="phase-tag ph-verify">Verify</span></p>
+  <h1>Humans in the loop, evidence on the table</h1>
+  <p class="lede">Accept or override, decisions as training data, evaluation, safety and governance.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">03 · Agentic AI for Process Operations</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>From chatbots to agents</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>Grounding agents in process knowledge</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Tools: agents that act</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Many agents, one hierarchy</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Check every proposal on the twin</span></a><a class="active" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Humans in the loop, evidence on the table</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the agent</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request materials</a></div>
+</div></aside><main class="prose"><p>This week closes the loop between agents and the people who run the process. Every accept or override is a labeled example of expert judgment, and a system designed to capture it improves with use. We also set the standard of evidence an agent must meet before anyone relies on it, including GMP and data-integrity expectations.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Design an accept or override step that records the decision and the reason.</li>
+<li>Use logged decisions as training and evaluation data for the agents.</li>
+<li>Evaluate an agent with traces, benchmarks and failure analysis, not impressions.</li>
+<li>Map agent behavior onto GMP, data-integrity and audit-trail expectations.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Accept or override&quot;] --&gt; B[&quot;Log decision and reason&quot;]
+    B --&gt; C[&quot;Training data&quot;]
+    C --&gt; D[&quot;Retrain or tune agents&quot;]
+    D --&gt; E[&quot;Evaluate on benchmark&quot;]
+    E --&gt; A
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-accept-or-override-expert-decisions-as-training-data">Session 1 · Concept — Accept or override: expert decisions as training data</h3>
+<p>A production decision system earns trust when experts can accept or override its choices and those choices flow back as data. We design the interface and the data model so the signal is clean.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Cloning expert choices into a policy, then measuring where it disagrees</li>
+<li>Capturing reasons for overrides, not only the override itself</li>
+<li>Bias and drift: when logged decisions stop reflecting good practice</li>
+</ul>
+<p><strong>Hands-on:</strong> Design a decision record with fields for proposal, evidence, outcome and reason.</p>
+<p><strong>You leave with:</strong> A decision-log schema and a feedback plan for your capstone.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-evaluating-agents-traces-benchmarks-failure-analysis">Session 2 · Studio — Evaluating agents: traces, benchmarks, failure analysis</h3>
+<p>An agent that looks good in a demo may fail one run in ten. We build a small benchmark of plant cases, score runs automatically and sort failures into causes.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Building a benchmark of deviation cases with known answers</li>
+<li>Scoring correctness, grounding, constraint violations and cost</li>
+<li>Failure analysis: retrieval miss, tool misuse, reasoning error or bad data</li>
+</ul>
+<p><strong>Hands-on:</strong> Score your team from Week 4 on eight cases and tabulate failure types.</p>
+<p><strong>You leave with:</strong> A benchmark, a score table and a ranked list of failure causes.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-safety-security-and-compliance-gmp-data-integrity-audit-trails">Session 3 · Lab — Safety, security and compliance: GMP, data integrity, audit trails</h3>
+<p>Regulated environments ask who did what, when and why. We add an audit trail, access limits and a review step so the system could be explained to an inspector.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Attributable, legible, contemporaneous, original and accurate records for agent actions</li>
+<li>Prompt injection, data leakage and tool permissions as security issues</li>
+<li>Change control for prompts, models and tools</li>
+</ul>
+<p><strong>Hands-on:</strong> Add an audit log and a permission list to your agent team.</p>
+<p><strong>You leave with:</strong> An audit trail and a one-page risk register for your system.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Add a decision log to my process-operations agent.
+Every proposal shown to a human must be stored with: timestamp, case
+id, proposed action, the evidence cited, the twin check results, and
+the model and prompt version.
+Add an accept or override control. If the human overrides, require a
+reason chosen from a short list plus a free-text note.
+Store everything in a table I can export. Then write a script that
+computes the override rate by reason, so I can see where the agent
+disagrees with experts most often.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>Submit your benchmark with scores and failure analysis, plus the decision-log schema and audit trail added to your agent team.</p>
+</div><nav class="pager"><a class="prev" href="week-5.html"><small>&larr; Week 5</small>Check every proposal on the twin</a><a class="next" href="week-7.html"><small>Week 7 &rarr;</small>Deploy the agent</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 3: Data meets model · Digital Twins for Process Engineering</title>
+<meta name="description" content="Sensors, messy time series and parameter estimation. Residuals tell the story.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 3: Data meets model · Digital Twins for Process Engineering">
+<meta property="og:description" content="Sensors, messy time series and parameter estimation. Residuals tell the story.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/digital-twins/week-3.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-twin">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="active" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-twin"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Digital Twins for Process Engineering</a> / Week 3</p>
+  <p class="kicker">Week 3 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Data meets model</h1>
+  <p class="lede">Sensors, messy time series and parameter estimation. Residuals tell the story.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">02 · Digital Twins for Process Engineering</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>What a twin is, and what it is not</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>First principles in code</span></a><a class="active" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Data meets model</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Hybrid twins: learned parts bounded by balances</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Keeping the twin honest</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Put the twin to work</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the twin</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request materials</a></div>
+</div></aside><main class="prose"><p>A model that has never met data is a hypothesis. This week you bring in real sensor series, clean them, fit kinetic parameters and learn to read the residuals. The residuals tell you where the physics is missing, and that sets up the hybrid in Week 4.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Spot and fix common sensor problems: dropouts, spikes, drift and mismatched sampling.</li>
+<li>Estimate kinetic parameters from batch data with an assistant&rsquo;s help.</li>
+<li>Read residual plots to see what the model gets wrong.</li>
+<li>Separate a bad fit from a bad model.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Raw sensor data&quot;] --&gt; B[&quot;Clean and align&quot;]
+    B --&gt; C[&quot;Fit parameters&quot;]
+    C --&gt; D[&quot;Residuals&quot;]
+    D --&gt; E[&quot;Model fixes&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-sensors-and-time-series-cleaning-messy-plant-data-with-ai">Session 1 · Concept — Sensors and time series: cleaning messy plant data with AI</h3>
+<p>Plant data is rarely tidy. We look at what DO probes, pH sensors and off-line assays really report, and what goes wrong between the vessel and the file.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Probe lag, calibration drift, noise and missing values</li>
+<li>Aligning fast online signals with slow offline samples</li>
+<li>What to ask an assistant to do, and what to check yourself</li>
+</ul>
+<p><strong>Hands-on:</strong> Inspect a messy bioreactor log and list every problem you can find.</p>
+<p><strong>You leave with:</strong> A cleaning plan written as a prompt.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-parameter-estimation-fitting-kinetics-to-data">Session 2 · Studio — Parameter estimation: fitting kinetics to data</h3>
+<p>You fit growth and yield parameters by least squares and learn why the starting guess, the bounds and the data design all matter.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>The objective function: what &ldquo;fit&rdquo; means</li>
+<li>Bounds, units and sensible initial guesses</li>
+<li>Why two parameter sets can fit equally well</li>
+</ul>
+<p><strong>Hands-on:</strong> Fit mu_max, Ks and yield to a provided batch dataset.</p>
+<p><strong>You leave with:</strong> Fitted parameters with a note on how confident you are in each.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-calibrate-your-model-and-read-the-residuals">Session 3 · Lab — Calibrate your model and read the residuals</h3>
+<p>You overlay the calibrated model on a held-out run and plot residuals against time and against state. Patterns in the residuals point to missing physics.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Calibrating on one run, testing on another</li>
+<li>Residuals versus time, versus DO and versus feed</li>
+<li>Writing a one-paragraph diagnosis</li>
+</ul>
+<p><strong>Hands-on:</strong> Calibrate, validate on a held-out batch and diagnose the misfit.</p>
+<p><strong>You leave with:</strong> A calibrated model and a residual diagnosis you can defend.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">I have a CSV from a fed-batch run with columns:
+time_h, DO_percent, pH, OD600, feed_mL_h.
+
+Clean it: remove spikes beyond 5 sigma, fill gaps shorter
+than 10 minutes by interpolation, and flag longer gaps.
+Align offline OD600 samples with the online signals.
+
+Then fit mu_max, Ks and Yxs of my Monod model to the first
+run using least squares with sensible bounds.
+Plot the model against the second run and plot residuals
+against time. Tell me what patterns I should look for.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>A cleaned dataset, a calibrated model validated on a held-out run, and a short residual diagnosis naming the physics you think is missing.</p>
+</div><nav class="pager"><a class="prev" href="week-2.html"><small>&larr; Week 2</small>First principles in code</a><a class="next" href="week-4.html"><small>Week 4 &rarr;</small>Hybrid twins: learned parts bounded by balances</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 1: From chatbots to agents · Agentic AI for Process Operations</title>
+<meta name="description" content="What turns a language model into an agent, by watching one troubleshoot a simulated plant upset.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 1: From chatbots to agents · Agentic AI for Process Operations">
+<meta property="og:description" content="What turns a language model into an agent, by watching one troubleshoot a simulated plant upset.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/week-1.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-agent"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Agentic AI for Process Operations</a> / Week 1</p>
+  <p class="kicker">Week 1 <span class="phase-tag ph-play">Play</span></p>
+  <h1>From chatbots to agents</h1>
+  <p class="lede">What turns a language model into an agent, by watching one troubleshoot a simulated plant upset.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">03 · Agentic AI for Process Operations</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="active" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>From chatbots to agents</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>Grounding agents in process knowledge</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Tools: agents that act</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Many agents, one hierarchy</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Check every proposal on the twin</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Humans in the loop, evidence on the table</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the agent</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request materials</a></div>
+</div></aside><main class="prose"><p>This week separates a chatbot from an agent. You watch an agent troubleshoot a simulated plant upset, then learn to instruct one precisely. For an engineer, the skill that matters is specification: an agent does what its goal, tools and context allow, no more and no less.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Define an agent by its four parts: goal, tools, memory and loop.</li>
+<li>Read an agent trace and spot where its reasoning went wrong.</li>
+<li>Write prompts with roles, context and structured outputs, the way you would write a work instruction.</li>
+<li>Name the common failure modes of agents in operations.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Goal&quot;] --&gt; B[&quot;Plan&quot;]
+    B --&gt; C[&quot;Tool&quot;]
+    C --&gt; D[&quot;Observe&quot;]
+    D --&gt; E[&quot;Reflect&quot;]
+    E --&gt; B
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-what-makes-an-agent-goal-tools-memory-loop">Session 1 · Concept — What makes an agent: goal, tools, memory, loop</h3>
+<p>A language model answers; an agent pursues a goal across many steps. We build the idea up from a single prompt to a loop that plans, acts and checks its own work.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Chatbot versus agent, using a pump cavitation question as the running example</li>
+<li>The plan, act, observe, reflect loop and where it stalls</li>
+<li>Short-term context, long-term memory and why both are limited</li>
+</ul>
+<p><strong>Hands-on:</strong> Sketch the goal, tools and memory of an agent for a fermentation upset.</p>
+<p><strong>You leave with:</strong> A one-page agent specification you can critique.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-play-watch-an-agent-troubleshoot-a-plant-upset">Session 2 · Studio — Play: watch an agent troubleshoot a plant upset</h3>
+<p>We run an agent on a simulated plant with a developing upset and read its trace together. Some steps are sound, some are confidently wrong, and finding the difference is the exercise.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Live run of an agent diagnosing a reactor temperature excursion</li>
+<li>Annotating the trace: which claims were grounded, which were guesses</li>
+<li>Changing one instruction and watching the behavior change</li>
+</ul>
+<p><strong>Hands-on:</strong> Re-run the agent with a tighter goal and compare traces.</p>
+<p><strong>You leave with:</strong> An annotated trace and a list of observed failure modes.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-prompting-as-engineering-roles-context-structured-outputs">Session 3 · Lab — Prompting as engineering: roles, context, structured outputs</h3>
+<p>Prompts are specifications. You write one with a defined role, supplied context and a structured output that downstream software can check.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Roles, constraints and context as the parts of a good prompt</li>
+<li>Structured outputs: asking for a fixed table or JSON instead of prose</li>
+<li>Testing a prompt on three cases, including an adversarial one</li>
+</ul>
+<p><strong>Hands-on:</strong> Build and test a structured-output prompt for classifying deviation reports.</p>
+<p><strong>You leave with:</strong> A tested prompt template and three recorded test cases.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">You are a process troubleshooting assistant for a fed-batch fermentation.
+Goal: find the most likely cause of a dissolved oxygen drop at hour 18.
+Context: DO fell from 40 percent to 12 percent in 20 minutes while the
+agitation setpoint and airflow were unchanged. Feed rate rose 15 percent.
+Rules: list at most three hypotheses, rank them, and for each name one
+measurement that would confirm or rule it out. Do not recommend a setpoint
+change. If the data are insufficient, say so.
+Output: a table with columns hypothesis, evidence for, evidence against,
+confirming measurement.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>Submit an annotated agent trace from the simulated upset and one structured-output prompt with three test cases, including a note on where it failed.</p>
+</div><nav class="pager"><a class="prev" href="syllabus.html"><small>&larr; Syllabus</small>Course schedule</a><a class="next" href="week-2.html"><small>Week 2 &rarr;</small>Grounding agents in process knowledge</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

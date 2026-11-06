@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reinforcement Learning for Chemical Engineers: Vignettes &amp; Vibe Coding · ChemE × AI Course Series</title>
+<meta name="description" content="From a no-code game to a tested fed-batch controller in seven weeks, with an AI pair-programmer at your side.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reinforcement Learning for Chemical Engineers: Vignettes &amp; Vibe Coding · ChemE × AI Course Series">
+<meta property="og:description" content="From a no-code game to a tested fed-batch controller in seven weeks, with an AI pair-programmer at your side.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="course-hero accent-rl"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <p class="crumbs"><a href="../index.html">Course series</a> / Course 1</p>
+    <p class="kicker">Course 01 <span class="status s-built">Built</span></p>
+    <h1>Reinforcement Learning for Chemical Engineers</h1>
+    <p class="subtitle">Vignettes &amp; Vibe Coding</p>
+    <p class="lede">From a no-code game to a tested fed-batch controller in seven weeks, with an AI pair-programmer at your side.</p>
+    <ul class="hero-meta"><li><strong>7</strong> weeks</li><li><strong>21</strong> hands-on sessions</li><li><strong>3 × 1 h</strong> per week</li><li><strong>0</strong> prior coding</li></ul>
+    <div class="actions"><a class="btn light" href="syllabus.html">View the syllabus</a>
+      <a class="btn outline-light" href="week-1.html">Start at Week 1</a></div>
+  </div>
+  <figure class="hero-art"><img src="../assets/img/rl-hero.svg" alt="Reinforcement Learning for Chemical Engineers overview diagram"></figure>
+</div>
+<div class="wrap hero-facts">
+  <div><span>Level</span>Undergraduate (junior/senior) · Graduate · Professionals</div>
+  <div><span>Prerequisites</span>None. Material balances help; no coding needed.</div>
+  <div><span>Capstone</span>An RL feeding controller for a fed-batch bioreactor twin, benchmarked against an operator&#x27;s recipe, stress-tested with a faulty pump, and shipped as a shareable web app.</div>
+</div></section><main class="wrap prose-wide course-body"><h2 id="why-this-course">Why this course</h2>
+<p>Reinforcement learning fits chemical engineering. Fed-batch feeding, process control and scheduling are all sequential decisions with delayed rewards and dynamic states. Yet RL rarely appears in ChemE curricula. The barrier was never the idea. It was the software: Python, Gymnasium, Stable-Baselines3, and the weeks it took to wire them together.</p>
+<p>That wall is gone. With an AI coding assistant, an engineer can describe a process in plain English and co-write a working simulator and environment. The instructor lived the old barrier in 2019, building the Game of Cells cell-culture twin by hand, and later published RL control for CAR T-cell expansion and fed-batch enzyme production. This course compresses that path into seven weeks.</p>
+<div class="callout">
+<p>If AI is replacing software engineers, who designs and deploys the systems? Process engineers do.</p>
+</div>
+<h2 id="who-it-is-for">Who it is for</h2>
+<div class="cards">
+<div class="card">
+<h4 id="undergraduates">Undergraduates</h4>
+<p>Juniors and seniors who know material balances and want a modern tool for control and optimization, with no coding background required.</p>
+</div>
+<div class="card">
+<h4 id="graduate-students">Graduate students</h4>
+<p>Researchers who want to prototype RL for their own unit operation and read process-control RL papers with a critical eye.</p>
+</div>
+<div class="card">
+<h4 id="practicing-engineers">Practicing engineers</h4>
+<p>Process, automation and bioprocess engineers who want a working, tested controller prototype without a software team.</p>
+</div>
+<div class="card">
+<h4 id="leaders-and-managers">Leaders and managers</h4>
+<p>Technical leaders who need to judge what AI can and cannot do on a plant, and ask the right verification questions.</p>
+</div>
+</div>
+<h2 id="what-you-will-be-able-to-do">What you will be able to do</h2>
+<div class="outcomes">
+<ol>
+<li><strong>Explain RL in ChemE terms.</strong> State, action, reward and policy, mapped onto a reactor.</li>
+<li><strong>Decide if a problem is an RL problem.</strong> Apply a process engineer&rsquo;s checklist before writing a line of code.</li>
+<li><strong>Write a spec sheet an AI can build from.</strong> Define state, action and reward precisely enough to test.</li>
+<li><strong>Co-author and test a simulator and environment.</strong> Mass balances and Monod kinetics become a Gymnasium environment.</li>
+<li><strong>Train, benchmark and diagnose an agent.</strong> Compare against an operator&rsquo;s recipe and catch reward hacking.</li>
+<li><strong>Ship a documented app.</strong> Hand off a controller dashboard that others can open and use.</li>
+</ol>
+</div>
+<h2 id="from-a-snake-to-a-bioreactor">From a snake to a bioreactor</h2>
+<p>The course starts with a game everyone knows, then swaps the board for a reactor.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Snake game</th>
+<th>Fed-batch bioreactor</th>
+<th>RL term</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Board</td>
+<td>Reactor</td>
+<td>Environment</td>
+</tr>
+<tr>
+<td>Snake position, food location</td>
+<td>Biomass, substrate, product, volume, DO</td>
+<td>State</td>
+</tr>
+<tr>
+<td>Up, down, left, right</td>
+<td>Feed pump rate (0 to 50 mL)</td>
+<td>Action</td>
+</tr>
+<tr>
+<td>Eat food, +1</td>
+<td>Enzyme titer</td>
+<td>Reward</td>
+</tr>
+<tr>
+<td>Hit the wall</td>
+<td>Overflow, substrate inhibition, oxygen limit</td>
+<td>Constraint violation</td>
+</tr>
+<tr>
+<td>Game over</td>
+<td>Batch end</td>
+<td>Episode end</td>
+</tr>
+</tbody>
+</table></div>
+<p><img alt="Fed-batch RL setup" src="../assets/img/bioreactor-rl.png"></p>
+<p><em>A fed-batch RL setup: external substrate tank, feed pump, sample outlet, sensor readings of enzyme activity and cell concentration, and the RL algorithm closing the loop.</em></p>
+<h2 id="seven-weeks-four-moves">Seven weeks, four moves</h2>
+<p>Every week belongs to one of four moves: Play with the idea, Build the pieces, Verify before you trust, and Deploy what you made.</p>
+<p><img alt="Play, Build, Verify, Deploy" src="../assets/img/pathway.svg"></p>
+<div class="week-grid"><a class="week-card ph-play" href="week-1.html"><span class="wk-top"><span class="wk-no">Week 1</span><span class="phase-tag ph-play">Play</span></span><strong>Decisions, rewards and a snake</strong><span class="wk-sum">Play before equations. The snake game teaches state, action, reward and policy by hand.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-play" href="week-2.html"><span class="wk-top"><span class="wk-no">Week 2</span><span class="phase-tag ph-play">Play</span></span><strong>From snake to bioreactor</strong><span class="wk-sum">The same loop, now feeding a fed-batch culture. When is a process problem an RL problem?</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-3.html"><span class="wk-top"><span class="wk-no">Week 3</span><span class="phase-tag ph-build">Build</span></span><strong>Vibe coding: break it down</strong><span class="wk-sum">The core habit of the course. Break the problem into pieces, one prompt and one test per piece.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-4.html"><span class="wk-top"><span class="wk-no">Week 4</span><span class="phase-tag ph-build">Build</span></span><strong>Build the environment</strong><span class="wk-sum">Turn mass balances and Monod kinetics into a simulator, then into a Gymnasium environment.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-5.html"><span class="wk-top"><span class="wk-no">Week 5</span><span class="phase-tag ph-build">Build</span></span><strong>Train the agent</strong><span class="wk-sum">PPO and SAC in plain language, a first training run, and reading learning curves.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-verify" href="week-6.html"><span class="wk-top"><span class="wk-no">Week 6</span><span class="phase-tag ph-verify">Verify</span></span><strong>Verify before you trust</strong><span class="wk-sum">A test ladder from units to closed loop. Beat the recipe, survive a faulty pump.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-deploy" href="week-7.html"><span class="wk-top"><span class="wk-no">Week 7</span><span class="phase-tag ph-deploy">Deploy</span></span><strong>Ship it and show it</strong><span class="wk-sum">From notebook to a shareable app, a gentle first look at Git, and the capstone showcase.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card cap" href="syllabus.html"><span class="wk-top"><span class="wk-no">Outcome</span></span><strong>Capstone</strong><span class="wk-sum">An RL feeding controller for a fed-batch bioreactor twin, benchmarked against an operator&#x27;s recipe, stress-tested with a faulty pump, and shipped as a shareable web app.</span><span class="wk-go">Full syllabus &rarr;</span></a></div>
+<h2 id="the-vibe-coding-method">The vibe-coding method</h2>
+<p>One lesson, repeated until it is a habit. Never ask the AI for the whole system. Ask for one piece, test that piece, then stack it.</p>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Break the problem down&quot;] --&gt; B[&quot;One piece, one prompt&quot;]
+    B --&gt; C[&quot;One test&quot;]
+    C --&gt;|&quot;Pass&quot;| D[&quot;Stack the piece&quot;]
+    C --&gt;|&quot;Fail&quot;| B
+    D --&gt; E[&quot;Test every layer&quot;]
+    E --&gt;|&quot;Fail&quot;| B
+</pre></div>
+<p>A failed test is not a setback. It is the loop working: you refine the prompt, not the code. The tests are mass balances, sanity bounds and benchmarks that any process engineer already trusts.</p>
+<h2 id="the-capstone">The capstone</h2>
+<div class="callout">
+<p>An RL feeding controller for a fed-batch bioreactor twin, benchmarked against an operator&rsquo;s recipe, stress-tested with a faulty pump, and shipped as a shareable web app.</p>
+</div>
+<ul>
+<li><strong>A tested twin and environment.</strong> A fed-batch simulator wrapped as a Gymnasium environment, with its test suite.</li>
+<li><strong>A trained and benchmarked controller.</strong> Titer compared against the recipe, plus a faulty-pump stress test.</li>
+<li><strong>A shareable app and build journal.</strong> A controller dashboard and a prompt log that documents how it was built.</li>
+</ul>
+<h2 id="how-every-week-runs">How every week runs</h2>
+<div class="cards">
+<div class="card">
+<h4 id="concept">Concept</h4>
+<p>One hour. The idea in plain words, with ChemE analogies and live demonstrations.</p>
+</div>
+<div class="card">
+<h4 id="studio">Studio</h4>
+<p>One hour. Work through a design problem together: specs, prompts and reward choices with an AI assistant.</p>
+</div>
+<div class="card">
+<h4 id="lab">Lab</h4>
+<p>One hour. Hands-on build in the browser, with a test for every piece you make.</p>
+</div>
+</div>
+<h2 id="what-you-need-and-what-you-dont">What you need, and what you don&rsquo;t</h2>
+<div class="cards">
+<div class="card">
+<h4 id="you-need">You need</h4>
+<p>A laptop, a web browser, a free AI assistant account, and a process you care about.</p>
+</div>
+<div class="card">
+<h4 id="you-dont-need">You don&rsquo;t need</h4>
+<p>Prior coding, a command line, Git, or any software installation. Code runs in the browser.</p>
+</div>
+</div>
+<h2 id="tools-you-will-meet">Tools you will meet</h2>
+<p class="chips">
+<span class="chip">Claude</span>
+<span class="chip">ChatGPT</span>
+<span class="chip">Gemini</span>
+<span class="chip">Copilot</span>
+<span class="chip">Google Colab</span>
+<span class="chip">Python</span>
+<span class="chip">Gymnasium</span>
+<span class="chip">Stable-Baselines3</span>
+<span class="chip">Streamlit</span>
+<span class="chip">GitHub</span>
+</p>
+
+<h2 id="after-this-course">After this course</h2>
+<ul>
+<li>Read and question RL papers in process control.</li>
+<li>Prototype RL for your own unit operation.</li>
+<li>Work fluently with any AI coding assistant.</li>
+<li>Judge AI-built tools by the tests they pass, not the confidence they project.</li>
+</ul>
+<p>Next: <a href="../digital-twins/index.html">Course 2: Digital Twins for Process Engineering</a> builds a better world to train in.</p></main><section class="band instructor-band" id="instructor"><div class="wrap"><div class="bio">
+<div class="bio-side">
+<div class="avatar">SF</div>
+<p><strong>Course designer and instructor</strong></p>
+<p>Co-developed with Dr. Nigel F. Reuel, Iowa State University</p>
+</div>
+<div class="bio-main">
+<p class="role">Your instructor</p>
+<h2 id="sakib-ferdous-phd">Sakib Ferdous, Ph.D.</h2>
+<p>Sakib is a chemical engineer and AI researcher who builds digital twins and learning controllers for bioprocesses, and carries them from equations to deployed tools. He holds a Ph.D. in Chemical Engineering from Iowa State University and is the <strong>first graduate of Iowa State&rsquo;s M.Sc. in Artificial Intelligence</strong>. His doctoral work built <em>Game of Cells</em>, a cell-culture digital twin for training control policies, and reinforcement-learning strategies for CAR T-cell expansion and fed-batch enzyme production, published in <em>Biotechnology and Bioengineering</em> and the <em>AIChE Journal</em>.</p>
+<p>He then took the same ideas into production. At <strong>Corteva Agriscience</strong> he deployed a company-wide decision pipeline on Docker and Kubernetes. At <strong>Craft BioSolutions</strong>, a startup founded on this research, he co-owns the physics-based bioreactor twin and its device-to-cloud stack. He learned AI for chemical engineering the hard way, back when the code was the wall. These courses are built so the next engineer does not have to.</p>
+<ul class="creds">
+<li><strong>Education</strong>Ph.D. Chemical Engineering and M.Sc. Artificial Intelligence, Iowa State · B.Sc. Chemical Engineering, BUET</li>
+<li><strong>Industry</strong>Postdoctoral Research Associate, AI in Plant Breeding, Corteva Agriscience (2025–)</li>
+<li><strong>Startup</strong>Head of Bioprocess Automation, Craft BioSolutions (2025–)</li>
+<li><strong>Next</strong>MIT Initiative for New Manufacturing, AI agents that learn bioprocesses (from January 2027, planned)</li>
+<li><strong>Teaching</strong>AIChE 2026 Education Division talk 217c · APEX and WiSE AI-in-ChemE workshops · mentee to first-author paper (2026)</li>
+<li><strong>Leadership</strong>NSF I-Corps Entrepreneurial Lead · CEGSO President · GPSS Senator, Iowa State</li>
+</ul>
+<div class="links">
+<a class="btn small primary" href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a>
+<a class="btn small ghost" href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a>
+<a class="btn small ghost" href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a>
+<a class="btn small ghost" href="https://orcid.org/0000-0001-7396-9830">ORCID</a>
+<a class="btn small ghost" href="https://github.com/Sakib1418">GitHub</a>
+</div>
+</div>
+</div></div></section><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

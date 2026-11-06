@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 3: Tools: agents that act · Agentic AI for Process Operations</title>
+<meta name="description" content="Function calling, the Model Context Protocol, and agents that run simulators and query data.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 3: Tools: agents that act · Agentic AI for Process Operations">
+<meta property="og:description" content="Function calling, the Model Context Protocol, and agents that run simulators and query data.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/week-3.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-agent"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Agentic AI for Process Operations</a> / Week 3</p>
+  <p class="kicker">Week 3 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Tools: agents that act</h1>
+  <p class="lede">Function calling, the Model Context Protocol, and agents that run simulators and query data.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">03 · Agentic AI for Process Operations</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>From chatbots to agents</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>Grounding agents in process knowledge</span></a><a class="active" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Tools: agents that act</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Many agents, one hierarchy</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Check every proposal on the twin</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Humans in the loop, evidence on the table</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the agent</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request materials</a></div>
+</div></aside><main class="prose"><p>This week gives agents hands. A language model that can call a calculator, a simulator or a database stops guessing numbers and starts computing them. For an engineer, tools are where an agent becomes useful, and also where it becomes dangerous, so we treat every tool as an interface with a contract.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Describe how function calling lets a model request a tool and read the result.</li>
+<li>Write a tool definition with typed inputs, units and allowed ranges.</li>
+<li>Explain what the Model Context Protocol standardizes and why it matters for plants and labs.</li>
+<li>Separate read-only tools from tools that change something.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Agent&quot;] --&gt; B[&quot;Tool call&quot;]
+    B --&gt; C[&quot;Simulator&quot;]
+    C --&gt; D[&quot;Result&quot;]
+    D --&gt; A
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-tool-use-calculators-simulators-databases">Session 1 · Concept — Tool use: calculators, simulators, databases</h3>
+<p>Models are poor at arithmetic and good at deciding what to compute. We give them tools for the calculation and keep the judgment of when to use each one with the model.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>How a model requests a tool and how the result returns to its context</li>
+<li>Tool definitions as contracts: names, units, ranges and error messages</li>
+<li>Read-only versus write tools, and why the difference matters</li>
+</ul>
+<p><strong>Hands-on:</strong> Give an assistant a heat-exchanger calculator and test it on three problems.</p>
+<p><strong>You leave with:</strong> A tool definition template with units and range checks.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-the-model-context-protocol-connecting-agents-to-lab-and-plant-systems">Session 2 · Studio — The Model Context Protocol: connecting agents to lab and plant systems</h3>
+<p>Writing a custom connector for every system does not scale. The Model Context Protocol offers a common way to expose data and tools to any compatible agent, which changes how lab and plant integration is scoped.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>What a protocol server exposes: tools, resources and prompts</li>
+<li>Mapping a historian, an electronic lab notebook and a simulator to servers</li>
+<li>Permissions, logging and what an agent should never be allowed to do</li>
+</ul>
+<p><strong>Hands-on:</strong> Draft an interface specification for a historian server, read-only first.</p>
+<p><strong>You leave with:</strong> A connector specification for one plant or lab system.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-an-agent-that-runs-a-simulation-and-reads-the-result">Session 3 · Lab — An agent that runs a simulation and reads the result</h3>
+<p>You build an agent that sets up a simulated reactor run, executes it, reads the output and explains what happened. The simulator is the authority; the agent reports what it computed.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Wrapping a simple reactor model as a callable tool</li>
+<li>Letting the agent choose inputs inside allowed ranges</li>
+<li>Reading results and reporting units and uncertainty honestly</li>
+</ul>
+<p><strong>Hands-on:</strong> Ask the agent to compare two feed profiles and justify the better one.</p>
+<p><strong>You leave with:</strong> A working agent that runs a simulation and summarizes the result.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Build me a tool that wraps a simple fed-batch reactor simulator.
+Inputs: feed rate in L per hour (allowed range 0.1 to 2.0), feed
+concentration in g per L (range 50 to 400), and run time in hours.
+Outputs: final biomass, final product titer, and the time series of
+dissolved oxygen.
+Reject any input outside its range with a clear error message that
+states the allowed range. Then write an agent that calls the tool for
+two feed rates and reports which gives the higher titer, with units.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>Submit a simulator-calling agent, its tool definition with units and range checks, and a short note on what the agent is not permitted to do.</p>
+</div><nav class="pager"><a class="prev" href="week-2.html"><small>&larr; Week 2</small>Grounding agents in process knowledge</a><a class="next" href="week-4.html"><small>Week 4 &rarr;</small>Many agents, one hierarchy</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

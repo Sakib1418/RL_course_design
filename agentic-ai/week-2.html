@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2: Grounding agents in process knowledge · Agentic AI for Process Operations</title>
+<meta name="description" content="Retrieval over SOPs, P&amp;IDs and batch records, and ontologies that organize process data.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 2: Grounding agents in process knowledge · Agentic AI for Process Operations">
+<meta property="og:description" content="Retrieval over SOPs, P&amp;IDs and batch records, and ontologies that organize process data.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/week-2.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-agent"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Agentic AI for Process Operations</a> / Week 2</p>
+  <p class="kicker">Week 2 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Grounding agents in process knowledge</h1>
+  <p class="lede">Retrieval over SOPs, P&amp;IDs and batch records, and ontologies that organize process data.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">03 · Agentic AI for Process Operations</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>From chatbots to agents</span></a><a class="active" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>Grounding agents in process knowledge</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Tools: agents that act</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Many agents, one hierarchy</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Check every proposal on the twin</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Humans in the loop, evidence on the table</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the agent</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request materials</a></div>
+</div></aside><main class="prose"><p>This week grounds agents in what your plant already knows. You build retrieval over SOPs, P&amp;IDs and batch records, then organize process data with an ontology so an agent can follow relationships, not just match words. For an engineer, the result is an assistant whose every answer points back to a controlled document.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Explain how retrieval-augmented generation finds and cites relevant passages.</li>
+<li>Decide how to split and index SOPs, batch records and equipment lists.</li>
+<li>Model equipment, streams and procedures as a small knowledge graph.</li>
+<li>Test an assistant for unsupported claims and missing citations.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Question&quot;] --&gt; B[&quot;Retrieve passages&quot;]
+    B --&gt; C[&quot;Cite sources&quot;]
+    C --&gt; D[&quot;Answer&quot;]
+    D --&gt; E[&quot;Check against sources&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-retrieval-augmented-generation-over-sops-and-batch-records">Session 1 · Concept — Retrieval-augmented generation over SOPs and batch records</h3>
+<p>A model does not know your plant. Retrieval fetches the relevant passages at question time, so the answer is built from your documents and can be traced back to them.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Chunking, embeddings and vector search, explained with an SOP example</li>
+<li>Why retrieval fails: stale revisions, tables, and near-duplicate procedures</li>
+<li>Citations as a control, not a courtesy</li>
+</ul>
+<p><strong>Hands-on:</strong> Index three SOP excerpts and ask five questions of increasing difficulty.</p>
+<p><strong>You leave with:</strong> A working retrieval pipeline and a list of the questions it got wrong.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-ontologies-and-knowledge-graphs-for-process-data">Session 2 · Studio — Ontologies and knowledge graphs for process data</h3>
+<p>Documents are text; a plant is a structure. We model equipment, streams, instruments and procedures as nodes and relations, so an agent can answer questions that span documents.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Designing an ontology: what are the entities, what are the relations</li>
+<li>From a P&amp;ID to a graph: vessels, lines, valves and sensors</li>
+<li>Combining graph lookup with document retrieval</li>
+</ul>
+<p><strong>Hands-on:</strong> Build a ten-node graph of a bioreactor train with your assistant.</p>
+<p><strong>You leave with:</strong> A small process ontology and a graph you can query in plain English.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-a-process-knowledge-assistant-that-cites-its-sources">Session 3 · Lab — A process knowledge assistant that cites its sources</h3>
+<p>You assemble retrieval and the graph into one assistant, then try to break it. The test is whether it refuses when the documents do not support an answer.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Wiring retrieval and graph lookup into a single assistant</li>
+<li>Requiring a citation for every factual sentence</li>
+<li>Red-teaming with questions the corpus cannot answer</li>
+</ul>
+<p><strong>Hands-on:</strong> Run a twelve-question test set and score answers as supported or unsupported.</p>
+<p><strong>You leave with:</strong> A knowledge assistant and a scored test set.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">You are a documentation assistant for a downstream purification suite.
+Answer only from the retrieved SOP and batch record passages provided.
+For every sentence, add a citation in the form [document, section].
+If the passages do not contain the answer, reply &quot;Not supported by the
+documents&quot; and name what document would be needed.
+Question: What is the hold time limit for the post-Protein A pool, and
+what must be recorded if it is exceeded?
+Output: a short answer, followed by a list of the citations used.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>Submit your knowledge assistant with a scored twelve-question test set, reporting how many answers were fully cited and how many were correctly refused.</p>
+</div><nav class="pager"><a class="prev" href="week-1.html"><small>&larr; Week 1</small>From chatbots to agents</a><a class="next" href="week-3.html"><small>Week 3 &rarr;</small>Tools: agents that act</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

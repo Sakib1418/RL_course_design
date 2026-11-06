@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4: Many agents, one hierarchy · Agentic AI for Process Operations</title>
+<meta name="description" content="A master agent, specialist agents and a critic. Orchestration patterns that hold up.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 4: Many agents, one hierarchy · Agentic AI for Process Operations">
+<meta property="og:description" content="A master agent, specialist agents and a critic. Orchestration patterns that hold up.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/week-4.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-agent"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Agentic AI for Process Operations</a> / Week 4</p>
+  <p class="kicker">Week 4 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Many agents, one hierarchy</h1>
+  <p class="lede">A master agent, specialist agents and a critic. Orchestration patterns that hold up.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">03 · Agentic AI for Process Operations</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>From chatbots to agents</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>Grounding agents in process knowledge</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Tools: agents that act</span></a><a class="active" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Many agents, one hierarchy</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Check every proposal on the twin</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Humans in the loop, evidence on the table</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the agent</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request materials</a></div>
+</div></aside><main class="prose"><p>This week organizes agents the way a plant organizes people. A master agent breaks a problem apart, specialists handle knowledge, data and simulation, and a critic challenges the result before it moves on. For an engineer, the hierarchy is a design choice with trade-offs in cost, speed and reliability.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Describe the roles of a master agent, specialist agents and a critic.</li>
+<li>Choose between plan-execute, reflection and debate patterns for a given task.</li>
+<li>Define each agent&rsquo;s scope so responsibilities do not overlap.</li>
+<li>Recognize where multi-agent systems add errors rather than remove them.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Master agent&quot;] --&gt; B[&quot;Knowledge specialist&quot;]
+    A --&gt; C[&quot;Data specialist&quot;]
+    A --&gt; D[&quot;Simulation specialist&quot;]
+    B --&gt; E[&quot;Critic&quot;]
+    C --&gt; E
+    D --&gt; E
+    E --&gt; A
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-hierarchical-agents-master-specialists-critic">Session 1 · Concept — Hierarchical agents: master, specialists, critic</h3>
+<p>One agent doing everything gets confused by its own context. We split the work into narrow specialists under a coordinator, with a critic whose only job is to find problems.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Sensor layer, small agents, mid-level reasoning and a master agent</li>
+<li>What each specialist sees, and what it is not allowed to see</li>
+<li>The critic as an independent check, with its own instructions</li>
+</ul>
+<p><strong>Hands-on:</strong> Draw the agent hierarchy for a bioreactor deviation investigation.</p>
+<p><strong>You leave with:</strong> A role card for each agent: scope, tools, inputs and outputs.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-orchestration-patterns-plan-execute-reflection-debate">Session 2 · Studio — Orchestration patterns: plan-execute, reflection, debate</h3>
+<p>Different tasks need different control flow. We compare three patterns on the same problem and measure where each one helps and where it only adds cost.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Plan-execute: write the plan first, then follow it step by step</li>
+<li>Reflection: draft, critique, revise, with a stopping rule</li>
+<li>Debate: two agents argue opposing causes before the master decides</li>
+</ul>
+<p><strong>Hands-on:</strong> Run the same deviation case through two patterns and compare outputs.</p>
+<p><strong>You leave with:</strong> A short comparison of quality, cost and run time across patterns.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-a-multi-agent-troubleshooting-team">Session 3 · Lab — A multi-agent troubleshooting team</h3>
+<p>You assemble a master, three specialists and a critic into one team and run it on a simulated deviation. The goal is a diagnosis that cites documents, uses data and survives the critic.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Implementing the hierarchy with your AI assistant</li>
+<li>Passing structured messages between agents, not free text</li>
+<li>Setting a step limit and a handoff rule when agents disagree</li>
+</ul>
+<p><strong>Hands-on:</strong> Run the team on two deviation cases and read the full trace.</p>
+<p><strong>You leave with:</strong> A working multi-agent team and traces from two cases.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Design a team of agents to investigate a pH excursion in a cell
+culture bioreactor.
+Agents: a master that plans and decides, a knowledge agent that
+searches SOPs and batch records, a data agent that reads sensor
+history, a simulation agent that runs the reactor model, and a critic.
+Rules: agents exchange JSON messages with fields claim, evidence and
+confidence. The critic must list at least two weaknesses in the
+proposed cause. The master stops after six rounds and reports any
+unresolved disagreement instead of hiding it.
+Write the role instructions for each agent.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>Submit a working multi-agent team with a role card for each agent and traces from two simulated deviations, noting one case where the critic changed the outcome.</p>
+</div><nav class="pager"><a class="prev" href="week-3.html"><small>&larr; Week 3</small>Tools: agents that act</a><a class="next" href="week-5.html"><small>Week 5 &rarr;</small>Check every proposal on the twin</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

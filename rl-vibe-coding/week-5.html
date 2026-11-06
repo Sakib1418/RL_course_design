@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5: Train the agent · RL for Chemical Engineers</title>
+<meta name="description" content="PPO and SAC in plain language, a first training run, and reading learning curves.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 5: Train the agent · RL for Chemical Engineers">
+<meta property="og:description" content="PPO and SAC in plain language, a first training run, and reading learning curves.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/week-5.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-rl"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">RL for Chemical Engineers</a> / Week 5</p>
+  <p class="kicker">Week 5 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Train the agent</h1>
+  <p class="lede">PPO and SAC in plain language, a first training run, and reading learning curves.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">01 · RL for Chemical Engineers</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>Decisions, rewards and a snake</span></a><a class="" href="week-2.html"><span class="dot ph-play"></span><span><small>Week 2 · Play</small>From snake to bioreactor</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Vibe coding: break it down</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Build the environment</span></a><a class="active" href="week-5.html"><span class="dot ph-build"></span><span><small>Week 5 · Build</small>Train the agent</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Verify before you trust</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Ship it and show it</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request materials</a></div>
+</div></aside><main class="prose"><p>This week the agent learns. You meet the main algorithms in plain language, run a first training session, and read the learning curves.</p>
+<p>For an engineer the most valuable skill is skepticism. An agent that scores well is not necessarily doing what you intended, and you learn to find out why.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Explain Q-learning, PPO and SAC without equations.</li>
+<li>Launch a training run and read a learning curve.</li>
+<li>Recognize signs that an agent is exploiting the reward.</li>
+<li>Use the AI to diagnose and propose fixes, then verify them.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Agent picks a feed rate&quot;] --&gt; B[&quot;Environment runs one step&quot;]
+    B --&gt; C[&quot;Reward and new state&quot;]
+    C --&gt; D[&quot;Update the policy&quot;]
+    D --&gt; A
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-algorithms-in-plain-language-q-learning-ppo-sac">Session 1 · Concept — Algorithms in plain language: Q-learning, PPO, SAC</h3>
+<p>Each algorithm is a different answer to one question: how should the agent change its policy after seeing what happened. We keep the explanation to analogies and diagrams.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Q-learning as a lookup table of how good each action is</li>
+<li>PPO as careful, small policy updates</li>
+<li>SAC as learning while keeping a deliberate amount of randomness</li>
+</ul>
+<p><strong>Hands-on:</strong> Match each algorithm to a process scenario and justify the choice.</p>
+<p><strong>You leave with:</strong> A one-page guide for choosing an algorithm for a continuous feed action.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-first-training-run-with-stable-baselines3">Session 2 · Studio — First training run with Stable-Baselines3</h3>
+<p>You prompt the AI to train an agent on your environment, start with a small run, and learn what each logged number means.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Prompt for a short PPO training run with a fixed random seed</li>
+<li>Read reward per episode, episode length and loss</li>
+<li>Compare the trained agent with random feeding</li>
+</ul>
+<p><strong>Hands-on:</strong> Train for a small budget and plot the learning curve.</p>
+<p><strong>You leave with:</strong> A first trained agent and an annotated learning curve.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-when-the-agent-cheats-debugging-rewards-with-ai">Session 3 · Lab — When the agent cheats: debugging rewards with AI</h3>
+<p>Agents find loopholes. Yours may end batches early to dodge penalties or drive the pump to a boundary. You find the loophole, name it and close it.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Watch the agent&rsquo;s feed trajectory, not only its score</li>
+<li>Spot a reward hack and trace it to a reward term</li>
+<li>Fix the reward, retrain and confirm the behavior changes</li>
+</ul>
+<p><strong>Hands-on:</strong> Find one loophole in your agent and patch the reward.</p>
+<p><strong>You leave with:</strong> A patched reward and a short note on what the agent exploited.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Using Stable-Baselines3, train a PPO agent on my FedBatchEnv.
+Use a fixed seed of 42 and 50,000 timesteps for a first run.
+Log episode reward and save the model to a file.
+After training, run 20 test batches and plot the feed rate
+over time for the best and the worst batch.
+Add comments explaining each hyperparameter in plain words.
+Do not change the environment code.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p><strong>Training report.</strong> A learning curve, the feed trajectory of your trained agent, and a short note describing one reward loophole you found and fixed.</p>
+</div><nav class="pager"><a class="prev" href="week-4.html"><small>&larr; Week 4</small>Build the environment</a><a class="next" href="week-6.html"><small>Week 6 &rarr;</small>Verify before you trust</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

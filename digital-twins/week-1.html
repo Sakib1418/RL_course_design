@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 1: What a twin is, and what it is not · Digital Twins for Process Engineering</title>
+<meta name="description" content="Models, simulators and twins on one spectrum. Play with a live bioreactor twin before building one.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 1: What a twin is, and what it is not · Digital Twins for Process Engineering">
+<meta property="og:description" content="Models, simulators and twins on one spectrum. Play with a live bioreactor twin before building one.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/digital-twins/week-1.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-twin">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="active" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-twin"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Digital Twins for Process Engineering</a> / Week 1</p>
+  <p class="kicker">Week 1 <span class="phase-tag ph-play">Play</span></p>
+  <h1>What a twin is, and what it is not</h1>
+  <p class="lede">Models, simulators and twins on one spectrum. Play with a live bioreactor twin before building one.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">02 · Digital Twins for Process Engineering</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="active" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>What a twin is, and what it is not</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>First principles in code</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Data meets model</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Hybrid twins: learned parts bounded by balances</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Keeping the twin honest</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Put the twin to work</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the twin</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request materials</a></div>
+</div></aside><main class="prose"><p>This week sets the vocabulary and the stakes. You will see where a spreadsheet model ends and a twin begins, steer a live bioreactor twin in your browser, and write your first vibe-coded simulation. For an engineer, it matters because every later decision depends on knowing which kind of model you are holding.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Place a model, simulator, digital shadow and digital twin on one spectrum.</li>
+<li>Explain what data flows in and what decisions flow out of each.</li>
+<li>Set up an AI workspace and run code in the browser without installing anything.</li>
+<li>Describe a draining tank in plain English and get a working simulation from an assistant.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Model&quot;] --&gt; B[&quot;Digital shadow&quot;]
+    B --&gt; C[&quot;Digital twin&quot;]
+    D[&quot;Plant data in&quot;] --&gt; B
+    C --&gt; E[&quot;Decisions out&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-models-simulators-twins-the-spectrum-and-where-industry-is">Session 1 · Concept — Models, simulators, twins: the spectrum, and where industry is</h3>
+<p>We separate hype from practice. A twin is defined by its connection to the plant, not by how detailed its equations are.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>The five-step spectrum from spreadsheet to twin</li>
+<li>Where industry actually sits today, and common vendor claims</li>
+<li>Why most twins drift or break, and what a hybrid does about it</li>
+</ul>
+<p><strong>Hands-on:</strong> Sort ten real tools and claims onto the spectrum in small groups.</p>
+<p><strong>You leave with:</strong> A one-page checklist for deciding whether something is a model, a shadow or a twin.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-play-steer-a-live-bioreactor-twin-in-the-browser">Session 2 · Studio — Play: steer a live bioreactor twin in the browser</h3>
+<p>You change feed rate, aeration and temperature in a running twin and watch dissolved oxygen, biomass and substrate respond. No code yet, only questions.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Steering a fed-batch run and noticing what the twin gets right</li>
+<li>Finding where the twin looks wrong or overconfident</li>
+<li>Naming the balances you can already see at work</li>
+</ul>
+<p><strong>Hands-on:</strong> Run three scenarios and note one surprise in your build journal.</p>
+<p><strong>You leave with:</strong> A short list of what the twin assumes and what you would test.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-your-ai-workspace-and-a-first-vibe-coded-simulation-a-draining-tank">Session 3 · Lab — Your AI workspace and a first vibe-coded simulation: a draining tank</h3>
+<p>You set up an AI assistant and Google Colab, then describe a draining tank and let the assistant write the simulation. You check it against a hand calculation.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Opening Colab and starting your prompt log</li>
+<li>Describing the tank, its outlet and the result you expect</li>
+<li>Comparing the plot with the analytic solution</li>
+</ul>
+<p><strong>Hands-on:</strong> Generate, run and verify a draining-tank simulation.</p>
+<p><strong>You leave with:</strong> A working notebook and a first entry in your prompt log.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">I am a chemical engineer with no coding background.
+Write a Python simulation for a cylindrical tank draining
+through an orifice at the bottom.
+
+Tank: 1.0 m diameter, initial level 2.0 m.
+Outlet: 2 cm diameter, discharge coefficient 0.61.
+
+Plot level versus time until the tank is empty.
+Compare with a hand-derived expression for Torricelli flow.
+Explain each step in plain English and tell me how I can
+check that volume is conserved.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>A draining-tank notebook that matches the analytic answer, plus a one-paragraph note placing a tool from your own field on the model-to-twin spectrum.</p>
+</div><nav class="pager"><a class="prev" href="syllabus.html"><small>&larr; Syllabus</small>Course schedule</a><a class="next" href="week-2.html"><small>Week 2 &rarr;</small>First principles in code</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

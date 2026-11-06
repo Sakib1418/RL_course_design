@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2: From snake to bioreactor · RL for Chemical Engineers</title>
+<meta name="description" content="The same loop, now feeding a fed-batch culture. When is a process problem an RL problem?">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 2: From snake to bioreactor · RL for Chemical Engineers">
+<meta property="og:description" content="The same loop, now feeding a fed-batch culture. When is a process problem an RL problem?">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/week-2.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-rl"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">RL for Chemical Engineers</a> / Week 2</p>
+  <p class="kicker">Week 2 <span class="phase-tag ph-play">Play</span></p>
+  <h1>From snake to bioreactor</h1>
+  <p class="lede">The same loop, now feeding a fed-batch culture. When is a process problem an RL problem?</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">01 · RL for Chemical Engineers</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>Decisions, rewards and a snake</span></a><a class="active" href="week-2.html"><span class="dot ph-play"></span><span><small>Week 2 · Play</small>From snake to bioreactor</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Vibe coding: break it down</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Build the environment</span></a><a class="" href="week-5.html"><span class="dot ph-build"></span><span><small>Week 5 · Build</small>Train the agent</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Verify before you trust</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Ship it and show it</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request materials</a></div>
+</div></aside><main class="prose"><p>This week the same loop moves from a board to a fed-batch culture. You feed a simulated bioreactor by hand and feel how hard it is to balance growth against overflow and oxygen limits.</p>
+<p>For an engineer the key skill is judgment: which process problems are genuinely RL problems, and which are better served by a PID loop or a recipe.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Map a fed-batch process onto state, action and reward.</li>
+<li>Apply a checklist to decide whether a problem suits RL.</li>
+<li>Define episode, return and exploration in plain words.</li>
+<li>Recognize delayed reward in a fermentation.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart TD
+    A[&quot;Sequential decisions?&quot;] --&gt; B[&quot;Delayed reward?&quot;]
+    B --&gt; C[&quot;Dynamic state you can measure?&quot;]
+    C --&gt; D[&quot;Safe to simulate and explore?&quot;]
+    D --&gt; E[&quot;Simpler control insufficient?&quot;]
+    E --&gt; F[&quot;Good RL candidate&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-the-bioreactor-game-feeding-a-culture-by-hand">Session 1 · Concept — The bioreactor game: feeding a culture by hand</h3>
+<p>You take the pump controls of a simulated fed-batch culture. Feed too little and growth stalls. Feed too much and substrate inhibition or an oxygen limit ends the batch.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Read the state: biomass, substrate, product, volume and dissolved oxygen</li>
+<li>Choose a feed rate from 0 to 50 mL each step</li>
+<li>Compare your titer with the operator&rsquo;s recipe</li>
+</ul>
+<p><strong>Hands-on:</strong> Run three batches by hand and record your titer for each.</p>
+<p><strong>You leave with:</strong> A felt sense of why feeding is a sequential decision problem.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-is-your-problem-an-rl-problem-the-process-engineers-checklist">Session 2 · Studio — Is your problem an RL problem? The process engineer&rsquo;s checklist</h3>
+<p>You test candidate problems against a checklist: sequential decisions, delayed reward, measurable state, safe exploration, and whether simpler control already works.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Score fed-batch feeding, a heat exchanger and a batch schedule against the checklist</li>
+<li>Debate where RL adds value and where PID is enough</li>
+<li>Bring one process of your own and score it</li>
+</ul>
+<p><strong>Hands-on:</strong> Fill out the checklist for a process from your own work.</p>
+<p><strong>You leave with:</strong> A scored checklist and an honest first answer on your candidate problem.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-episodes-returns-exploration-the-learning-loop-in-plain-words">Session 3 · Lab — Episodes, returns, exploration: the learning loop in plain words</h3>
+<p>You watch a simple agent learn over many episodes and read how its return improves. Exploration is the agent trying feed rates it has not tried before.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Define an episode as one batch from inoculation to harvest</li>
+<li>Read a return curve and explain why early batches look bad</li>
+<li>Change the exploration level and observe the effect</li>
+</ul>
+<p><strong>Hands-on:</strong> Run a toy learner and plot return against episode number.</p>
+<p><strong>You leave with:</strong> A plain-language explanation of how an agent improves with experience.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Act as a bioprocess engineer teaching a new colleague.
+Describe a fed-batch fermentation as a reinforcement
+learning problem.
+State: biomass, substrate, product, volume, dissolved oxygen.
+Action: feed pump rate between 0 and 50 mL per step.
+Reward: final enzyme titer.
+Explain what an episode is here, why the reward is delayed,
+and what exploration would mean for a real reactor.
+Then list two reasons this problem might not suit RL.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p><strong>RL-fit memo.</strong> A one-page checklist score for a process of your choice, with a clear verdict on whether it is an RL problem and why.</p>
+</div><nav class="pager"><a class="prev" href="week-1.html"><small>&larr; Week 1</small>Decisions, rewards and a snake</a><a class="next" href="week-3.html"><small>Week 3 &rarr;</small>Vibe coding: break it down</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

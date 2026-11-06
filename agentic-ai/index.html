@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic AI for Process Operations: Graduate course · ChemE × AI Course Series</title>
+<meta name="description" content="Design AI agents that reason over process knowledge, propose actions, and prove them on a digital twin before anything touches the plant.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agentic AI for Process Operations: Graduate course · ChemE × AI Course Series">
+<meta property="og:description" content="Design AI agents that reason over process knowledge, propose actions, and prove them on a digital twin before anything touches the plant.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/agentic-ai/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-agent">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="active" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta" href="mailto:ferdous1418@gmail.com?subject=Course%20materials%20request">Request materials</a>
+</div></header>
+<div id="content">
+
+<section class="course-hero accent-agent"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <p class="crumbs"><a href="../index.html">Course series</a> / Course 3</p>
+    <p class="kicker">Course 03 <span class="status s-designed">Designed</span></p>
+    <h1>Agentic AI for Process Operations</h1>
+    <p class="subtitle">Graduate course</p>
+    <p class="lede">Design AI agents that reason over process knowledge, propose actions, and prove them on a digital twin before anything touches the plant.</p>
+    <ul class="hero-meta"><li><strong>7</strong> weeks</li><li><strong>21</strong> hands-on sessions</li><li><strong>3 × 1 h</strong> per week</li><li><strong>0</strong> prior coding</li></ul>
+    <div class="actions"><a class="btn light" href="syllabus.html">View the syllabus</a>
+      <a class="btn outline-light" href="week-1.html">Start at Week 1</a></div>
+  </div>
+  <figure class="hero-art"><img src="../assets/img/agent-hero.svg" alt="Agentic AI for Process Operations overview diagram"></figure>
+</div>
+<div class="wrap hero-facts">
+  <div><span>Level</span>Graduate · Professionals and technical leaders</div>
+  <div><span>Prerequisites</span>None formal. Course 1 or 2 recommended.</div>
+  <div><span>Capstone</span>A multi-agent operations assistant that diagnoses a process deviation, grounds every claim in documents and data, verifies its proposed action on a twin, and routes it to a human for sign-off, with a full audit trail.</div>
+</div></section><main class="wrap prose-wide course-body"><h2 id="why-this-course">Why this course</h2>
+<p>AI is strong at two things: retrieving information from a very large corpus, and reading it to find context. It is weak at causal reasoning from small data, and it can be confidently wrong. For process work, where data are scarce and mistakes are expensive, that combination demands design, not trust.</p>
+<p>We once stored information. Then we stored data. Now we can store reasoning, in agents that read, plan, call tools and act. But a plant is not a chat window. Every proposal an agent makes is grounded in SOPs and data, then checked on a digital twin against first principles before a person sees it. The instructor has built and deployed decision systems in production, and the course teaches the patterns that survive contact with operations.</p>
+<div class="callout">
+<p>An agent may propose. Physics checks. A human decides.</p>
+</div>
+<h2 id="who-it-is-for">Who it is for</h2>
+<div class="cards">
+<div class="card">
+<h4 id="graduate-students">Graduate students</h4>
+<p>Build a research-grade agentic system on a process problem of your own, with evaluation you can defend.</p>
+</div>
+<div class="card">
+<h4 id="researchers">Researchers</h4>
+<p>Learn the architecture behind verified agents for self-driving laboratories and automated experimentation.</p>
+</div>
+<div class="card">
+<h4 id="practicing-engineers">Practicing engineers</h4>
+<p>Turn SOPs, batch records and deviation reports into an assistant that cites its sources and shows its work.</p>
+</div>
+<div class="card">
+<h4 id="technical-leaders">Technical leaders</h4>
+<p>Learn enough to scope a pilot, ask vendors the right questions, and audit what an agent is allowed to do.</p>
+</div>
+</div>
+<h2 id="what-you-will-be-able-to-do">What you will be able to do</h2>
+<div class="outcomes">
+<ol>
+<li><strong>Explain what makes an agent.</strong> Describe goal, tools, memory and loop, and name the failure modes in operations.</li>
+<li><strong>Ground agents in process knowledge.</strong> Retrieve from SOPs, P&amp;IDs and batch records, with citations for every claim.</li>
+<li><strong>Give agents tools.</strong> Connect simulators, databases and lab systems through function calls and the Model Context Protocol.</li>
+<li><strong>Orchestrate a hierarchy.</strong> Coordinate a master agent, specialist agents and a critic that hold up under review.</li>
+<li><strong>Verify on a twin.</strong> Apply balance checks and constraint validators so no proposal reaches a human unchecked.</li>
+<li><strong>Evaluate, govern and deploy.</strong> Measure agents with traces and benchmarks, keep a human in the loop, and ship a service.</li>
+</ol>
+</div>
+<h2 id="the-architecture-you-will-build">The architecture you will build</h2>
+<p>Every week adds one layer to a single system, from the documents and sensors at the bottom to the human sign-off at the top.</p>
+<div class="figure-diagram"><pre class="mermaid">flowchart TD
+    A[&quot;Sensors and documents&quot;] --&gt; B[&quot;Specialist agents&quot;]
+    B --&gt; C[&quot;Master agent&quot;]
+    C --&gt; D[&quot;Proposal&quot;]
+    D --&gt; E[&quot;Twin check&quot;]
+    E --&gt; F[&quot;Human accept or override&quot;]
+    F --&gt; G[&quot;Plant&quot;]
+    F -.-&gt;|&quot;decisions become training data&quot;| B
+</pre></div>
+<p>The twin is the gate: a proposal that breaks a mass balance or a constraint is sent back before it costs anyone&rsquo;s attention. Each accept or override is logged, so expert judgment becomes data the agents learn from.</p>
+<h2 id="seven-weeks-four-moves">Seven weeks, four moves</h2>
+<p>The course moves from Play to Build to Verify to Deploy, so you watch an agent work before you build one, and you prove it safe before you ship it.</p>
+<p><img alt="Play, Build, Verify, Deploy" src="../assets/img/pathway.svg"></p>
+<div class="week-grid"><a class="week-card ph-play" href="week-1.html"><span class="wk-top"><span class="wk-no">Week 1</span><span class="phase-tag ph-play">Play</span></span><strong>From chatbots to agents</strong><span class="wk-sum">What turns a language model into an agent, by watching one troubleshoot a simulated plant upset.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-2.html"><span class="wk-top"><span class="wk-no">Week 2</span><span class="phase-tag ph-build">Build</span></span><strong>Grounding agents in process knowledge</strong><span class="wk-sum">Retrieval over SOPs, P&amp;IDs and batch records, and ontologies that organize process data.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-3.html"><span class="wk-top"><span class="wk-no">Week 3</span><span class="phase-tag ph-build">Build</span></span><strong>Tools: agents that act</strong><span class="wk-sum">Function calling, the Model Context Protocol, and agents that run simulators and query data.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-build" href="week-4.html"><span class="wk-top"><span class="wk-no">Week 4</span><span class="phase-tag ph-build">Build</span></span><strong>Many agents, one hierarchy</strong><span class="wk-sum">A master agent, specialist agents and a critic. Orchestration patterns that hold up.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-verify" href="week-5.html"><span class="wk-top"><span class="wk-no">Week 5</span><span class="phase-tag ph-verify">Verify</span></span><strong>Check every proposal on the twin</strong><span class="wk-sum">Hallucinated actions are unsafe actions. First-principles guardrails and a twin in the loop.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-verify" href="week-6.html"><span class="wk-top"><span class="wk-no">Week 6</span><span class="phase-tag ph-verify">Verify</span></span><strong>Humans in the loop, evidence on the table</strong><span class="wk-sum">Accept or override, decisions as training data, evaluation, safety and governance.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card ph-deploy" href="week-7.html"><span class="wk-top"><span class="wk-no">Week 7</span><span class="phase-tag ph-deploy">Deploy</span></span><strong>Deploy the agent</strong><span class="wk-sum">From prototype to service, the economics of agents, self-driving labs, and the capstone.</span><span class="wk-go">3 sessions &rarr;</span></a><a class="week-card cap" href="syllabus.html"><span class="wk-top"><span class="wk-no">Outcome</span></span><strong>Capstone</strong><span class="wk-sum">A multi-agent operations assistant that diagnoses a process deviation, grounds every claim in documents and data, verifies its proposed action on a twin, and routes it to a human for sign-off, with a full audit trail.</span><span class="wk-go">Full syllabus &rarr;</span></a></div>
+<h2 id="where-agents-help-and-where-they-do-not">Where agents help, and where they do not</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Strong at</th>
+<th>Weak at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retrieving the right paragraph from thousands of SOPs and batch records</td>
+<td>Causal reasoning from small, noisy process data</td>
+</tr>
+<tr>
+<td>Summarizing deviation reports and finding context across documents</td>
+<td>Knowing when they are wrong; errors arrive with full confidence</td>
+</tr>
+<tr>
+<td>Drafting structured plans, checklists and investigation reports</td>
+<td>Respecting mass and energy balances without being forced to</td>
+</tr>
+<tr>
+<td>Calling tools such as calculators and simulators in sequence</td>
+<td>Staying inside operating limits unless a validator enforces them</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-capstone">The capstone</h2>
+<div class="callout">
+<p>A multi-agent operations assistant that diagnoses a process deviation, grounds every claim in documents and data, verifies its proposed action on a twin, and routes it to a human for sign-off, with a full audit trail.</p>
+</div>
+<ul>
+<li>A working agent hierarchy that runs end to end on the simulated plant and document corpus</li>
+<li>A twin-in-the-loop verification layer with documented guardrails and failure cases</li>
+<li>A technical memo with evaluation results, an audit trail and a deployment plan</li>
+</ul>
+<h2 id="how-every-week-runs">How every week runs</h2>
+<div class="cards">
+<div class="card">
+<h4 id="concept">Concept</h4>
+<p>One hour on the idea of the week, framed as an engineering problem with a plant example.</p>
+</div>
+<div class="card">
+<h4 id="studio">Studio</h4>
+<p>One hour of guided building: you and your AI assistant work through a design together, live.</p>
+</div>
+<div class="card">
+<h4 id="lab">Lab</h4>
+<p>One hour of hands-on work in a browser notebook, ending in a working piece of the system.</p>
+</div>
+</div>
+<h2 id="what-you-need-and-what-you-dont">What you need, and what you don&rsquo;t</h2>
+<div class="cards">
+<div class="card">
+<h4 id="you-need">You need</h4>
+<p>A laptop, a web browser, a free AI assistant account, and a process problem you care about.</p>
+</div>
+<div class="card">
+<h4 id="you-dont-need">You don&rsquo;t need</h4>
+<p>Prior coding, a command line, Git, installations, or access to a real plant. A simulated plant and a document corpus are provided.</p>
+</div>
+</div>
+<h2 id="tools-you-will-meet">Tools you will meet</h2>
+<p class="chips">
+<span class="chip">Claude</span>
+<span class="chip">ChatGPT</span>
+<span class="chip">Gemini</span>
+<span class="chip">Copilot</span>
+<span class="chip">Cursor</span>
+<span class="chip">Google Colab</span>
+<span class="chip">Python</span>
+<span class="chip">Model Context Protocol</span>
+<span class="chip">Vector search</span>
+<span class="chip">Knowledge graphs</span>
+<span class="chip">Process simulators</span>
+<span class="chip">Docker</span>
+<span class="chip">GitHub</span>
+</p>
+
+<h2 id="after-this-course">After this course</h2>
+<ul>
+<li>Lead an agentic-AI pilot in operations, R&amp;D or tech transfer.</li>
+<li>Specify and audit vendor AI agents against a clear standard of evidence.</li>
+<li>Start research on verified agents for self-driving laboratories.</li>
+<li>Bring a documented, evaluated prototype to your team or committee.</li>
+</ul>
+<p>Continue with <a href="../digital-twins/index.html">Course 2: Digital Twins for Process Engineering</a> or revisit <a href="../rl-vibe-coding/index.html">Course 1: Reinforcement Learning for Chemical Engineers</a>.</p></main><section class="band instructor-band" id="instructor"><div class="wrap"><div class="bio">
+<div class="bio-side">
+<div class="avatar">SF</div>
+<p><strong>Course designer and instructor</strong></p>
+<p>Co-developed with Dr. Nigel F. Reuel, Iowa State University</p>
+</div>
+<div class="bio-main">
+<p class="role">Your instructor</p>
+<h2 id="sakib-ferdous-phd">Sakib Ferdous, Ph.D.</h2>
+<p>Sakib is a chemical engineer and AI researcher who builds digital twins and learning controllers for bioprocesses, and carries them from equations to deployed tools. He holds a Ph.D. in Chemical Engineering from Iowa State University and is the <strong>first graduate of Iowa State&rsquo;s M.Sc. in Artificial Intelligence</strong>. His doctoral work built <em>Game of Cells</em>, a cell-culture digital twin for training control policies, and reinforcement-learning strategies for CAR T-cell expansion and fed-batch enzyme production, published in <em>Biotechnology and Bioengineering</em> and the <em>AIChE Journal</em>.</p>
+<p>He then took the same ideas into production. At <strong>Corteva Agriscience</strong> he deployed a company-wide decision pipeline on Docker and Kubernetes. At <strong>Craft BioSolutions</strong>, a startup founded on this research, he co-owns the physics-based bioreactor twin and its device-to-cloud stack. He learned AI for chemical engineering the hard way, back when the code was the wall. These courses are built so the next engineer does not have to.</p>
+<ul class="creds">
+<li><strong>Education</strong>Ph.D. Chemical Engineering and M.Sc. Artificial Intelligence, Iowa State · B.Sc. Chemical Engineering, BUET</li>
+<li><strong>Industry</strong>Postdoctoral Research Associate, AI in Plant Breeding, Corteva Agriscience (2025–)</li>
+<li><strong>Startup</strong>Head of Bioprocess Automation, Craft BioSolutions (2025–)</li>
+<li><strong>Next</strong>MIT Initiative for New Manufacturing, AI agents that learn bioprocesses (from January 2027, planned)</li>
+<li><strong>Teaching</strong>AIChE 2026 Education Division talk 217c · APEX and WiSE AI-in-ChemE workshops · mentee to first-author paper (2026)</li>
+<li><strong>Leadership</strong>NSF I-Corps Entrepreneurial Lead · CEGSO President · GPSS Senator, Iowa State</li>
+</ul>
+<div class="links">
+<a class="btn small primary" href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a>
+<a class="btn small ghost" href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a>
+<a class="btn small ghost" href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a>
+<a class="btn small ghost" href="https://orcid.org/0000-0001-7396-9830">ORCID</a>
+<a class="btn small ghost" href="https://github.com/Sakib1418">GitHub</a>
+</div>
+</div>
+</div></div></section><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Agentic%20AI%20for%20Process%20Operations">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>
