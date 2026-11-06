@@ -1,5 +1,7 @@
 # Reinforcement Learning for Chemical Engineers: Vignettes and Vibe Coding
 
+> **Course website:** [sakib1418.github.io/RL_course_design](https://sakib1418.github.io/RL_course_design/) is the public front page for the three-course ChemE × AI series: *RL for Chemical Engineers*, *Digital Twins for Process Engineering*, and *Agentic AI for Process Operations*. Source: [`course_site/`](course_site/) (start with [`course_site/SYSTEM.md`](course_site/SYSTEM.md)).
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Ecosystem: Gymnasium & SB3](https://img.shields.io/badge/RL%20Ecosystem-Gymnasium%20%7C%20Stable%20Baselines3-brightgreen.svg)](https://gymnasium.farama.org/)
