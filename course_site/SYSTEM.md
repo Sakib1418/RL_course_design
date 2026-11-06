@@ -72,7 +72,7 @@ Voice: confident, concrete, ChemE-native (balances, kinetics, fed-batch, CSTR, P
 - [x] S4 Design system, template, build.py, SVG figures, hub, partials
 - [x] S5 Writers ×3 (parallel) → content/<slug>/
 - [x] S6 Build + visual QA (headless screenshots)
-- [ ] S7 Publish to gh-pages; verify live URL
+- [x] S7 Publish to gh-pages; verify live URL (live 2026-11-06)
 - [x] S8 QR code + front-page screenshot → presentation/
 
 ## 9 · Build, preview, publish
