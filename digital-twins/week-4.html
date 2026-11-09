@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4: Hybrid twins: learned parts bounded by balances · Digital Twins for Process Engineering</title>
+<meta name="description" content="Where physics stops, a small neural network learns the unknown term, inside the balances.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 4: Hybrid twins: learned parts bounded by balances · Digital Twins for Process Engineering">
+<meta property="og:description" content="Where physics stops, a small neural network learns the unknown term, inside the balances.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/digital-twins/week-4.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-twin">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="active" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-twin"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Digital Twins for Process Engineering</a> / Week 4</p>
+  <p class="kicker">Week 4 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Hybrid twins: learned parts bounded by balances</h1>
+  <p class="lede">Where physics stops, a small neural network learns the unknown term, inside the balances.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">02 · Digital Twins for Process Engineering</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>What a twin is, and what it is not</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>First principles in code</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Data meets model</span></a><a class="active" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Hybrid twins: learned parts bounded by balances</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Keeping the twin honest</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Put the twin to work</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the twin</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20Digital%20Twins%20for%20Process%20Engineering" data-email="ferdous1418@gmail.com" data-subject="Feedback: Digital Twins for Process Engineering">Feedback</a></div>
+</div></aside><main class="prose"><p>Where physics stops, a small neural network can learn the missing term. The key is where you put it. This week you place the learned part inside the balances, so the model still conserves mass, and compare three approaches head to head.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Identify which term in a balance is truly unknown, such as a specific rate or a kLa.</li>
+<li>Build a hybrid model with a physics skeleton and a small learned closure.</li>
+<li>Compare mechanistic, data-only and hybrid models on data they have not seen.</li>
+<li>Explain why bounded learned parts extrapolate more safely.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Balances&quot;] --&gt; D[&quot;Hybrid model&quot;]
+    B[&quot;Unknown term&quot;] --&gt; C[&quot;Neural closure&quot;]
+    C --&gt; D
+    D --&gt; E[&quot;Compare on new data&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-where-physics-stops-learning-the-unknown-term">Session 1 · Concept — Where physics stops: learning the unknown term</h3>
+<p>We go back to the residuals from Week 3 and ask which term in the balance they point to. Often it is oxygen transfer, a growth inhibition or a heat loss.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Closure terms in balances: rates, transfer coefficients, heat losses</li>
+<li>Black-box, gray-box and hybrid models, and their failure modes</li>
+<li>Why constraints matter more than network size</li>
+</ul>
+<p><strong>Hands-on:</strong> Mark the unknown term in your own balance and describe what it depends on.</p>
+<p><strong>You leave with:</strong> A named closure term and the inputs it should see.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-build-a-hybrid-physics-skeleton-machine-learned-closure">Session 2 · Studio — Build a hybrid: physics skeleton, machine-learned closure</h3>
+<p>With your assistant, you replace one rate expression with a small neural network inside the ODE system. You keep the balances intact and bound the output to physical limits.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>A tiny network in PyTorch, explained without jargon</li>
+<li>Training the closure through the ODE solution</li>
+<li>Bounding outputs so rates cannot go negative or exceed limits</li>
+</ul>
+<p><strong>Hands-on:</strong> Build the hybrid and confirm the conservation test still passes.</p>
+<p><strong>You leave with:</strong> A trained hybrid model that conserves mass.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-mechanistic-vs-data-only-vs-hybrid-head-to-head">Session 3 · Lab — Mechanistic vs. data-only vs. hybrid, head to head</h3>
+<p>You score three models on a run outside the training range. You look for the case where each one fails, and write down what that tells you.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>A shared scoreboard: error, conservation, and behavior outside the data</li>
+<li>Pushing each model to a new feed or temperature</li>
+<li>Choosing which model you would trust, and why</li>
+</ul>
+<p><strong>Hands-on:</strong> Run the head-to-head and extrapolate each model beyond its data.</p>
+<p><strong>You leave with:</strong> A comparison table and a recommendation in two sentences.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Take my fed-batch ODE model (attached) and replace the
+specific growth rate with a small neural network in PyTorch.
+
+Inputs: substrate S, dissolved oxygen DO, temperature T.
+Output: mu, bounded between 0 and 0.6 per hour.
+
+Keep the mass balances for X, S, P and V unchanged so that
+mass is conserved by construction.
+Train it on my calibration runs, then compare against my
+Monod model and a pure neural network on the held-out run.
+Show errors and a conservation check for each.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>A hybrid model with a passing conservation test, and a one-page comparison of mechanistic, data-only and hybrid behavior, including outside the training data.</p>
+</div><nav class="pager"><a class="prev" href="week-3.html"><small>&larr; Week 3</small>Data meets model</a><a class="next" href="week-5.html"><small>Week 5 &rarr;</small>Keeping the twin honest</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

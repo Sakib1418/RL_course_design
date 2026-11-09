@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 7: Deploy the twin · Digital Twins for Process Engineering</title>
+<meta name="description" content="From device to cloud to dashboard, with documentation others can trust.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 7: Deploy the twin · Digital Twins for Process Engineering">
+<meta property="og:description" content="From device to cloud to dashboard, with documentation others can trust.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/digital-twins/week-7.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-twin">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="active" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-twin"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Digital Twins for Process Engineering</a> / Week 7</p>
+  <p class="kicker">Week 7 <span class="phase-tag ph-deploy">Deploy</span></p>
+  <h1>Deploy the twin</h1>
+  <p class="lede">From device to cloud to dashboard, with documentation others can trust.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">02 · Digital Twins for Process Engineering</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>What a twin is, and what it is not</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>First principles in code</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Data meets model</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Hybrid twins: learned parts bounded by balances</span></a><a class="" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Keeping the twin honest</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Put the twin to work</span></a><a class="active" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the twin</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20Digital%20Twins%20for%20Process%20Engineering" data-email="ferdous1418@gmail.com" data-subject="Feedback: Digital Twins for Process Engineering">Feedback</a></div>
+</div></aside><main class="prose"><p>A twin on your laptop helps you. A twin others can open, trust and maintain helps your organization. This week covers the path from sensor to cloud to dashboard, packages your twin as an app, and ends with the capstone showcase.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Describe how data travels from a device to the cloud to a twin.</li>
+<li>Package a twin as a simple web app with a dashboard.</li>
+<li>Document assumptions, limits and ownership so others can trust the twin.</li>
+<li>Present a capstone and defend its validation.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Sensor&quot;] --&gt; B[&quot;Gateway&quot;]
+    B --&gt; C[&quot;Cloud&quot;]
+    C --&gt; D[&quot;Twin&quot;]
+    D --&gt; E[&quot;Dashboard&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-device-to-cloud-data-pipelines-and-dashboards-conceptually">Session 1 · Concept — Device to cloud: data pipelines and dashboards, conceptually</h3>
+<p>We follow a DO reading from the probe to a screen, and name every place it can go wrong. No cloud accounts are needed; the focus is the architecture.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Sensors, gateways, message brokers such as MQTT, storage and compute</li>
+<li>Latency, security and what happens when the network drops</li>
+<li>How a twin consumes data and publishes results</li>
+</ul>
+<p><strong>Hands-on:</strong> Draw the pipeline for your capstone unit and mark its failure points.</p>
+<p><strong>You leave with:</strong> An architecture sketch you could hand to an IT team.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-package-the-twin-as-an-app-document-and-govern-it">Session 2 · Studio — Package the twin as an app; document and govern it</h3>
+<p>You turn your notebook into a small dashboard app, with a gentle first look at GitHub for saving and sharing it. Then you write the model card that goes with it.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>A Streamlit dashboard with inputs, predictions and uncertainty</li>
+<li>A first, gentle look at GitHub for sharing the project</li>
+<li>A model card: purpose, data, limits, owner and review date</li>
+</ul>
+<p><strong>Hands-on:</strong> Build the dashboard and write its model card.</p>
+<p><strong>You leave with:</strong> A shareable app and documentation another engineer could trust.</p>
+</div>
+<div class="session">
+<h3 id="session-3-capstone-showcase">Session 3 · Capstone showcase</h3>
+<p>Each participant presents a hybrid twin of a fed-batch bioreactor or CSTR. You show the dashboard, the validation evidence and what the twin says it does not know.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Five-minute demos with a live what-if</li>
+<li>Questions on validation, drift and uncertainty</li>
+<li>Peer feedback against the rubric</li>
+</ul>
+<p><strong>Hands-on:</strong> Present your twin and answer questions from peers.</p>
+<p><strong>You leave with:</strong> A finished capstone, feedback, and a plan for your own first twin.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Turn my hybrid twin notebook into a Streamlit app.
+
+Inputs: feed rate, aeration, temperature.
+Outputs: predicted biomass, substrate and DO over time,
+shown with a 95 percent uncertainty band.
+Add a panel that shows the latest drift alarm status and
+the date of the last validation.
+
+Then draft a one-page model card with: purpose, data used,
+parameter register, known limits, owner and review date.
+Keep the language plain enough for a plant manager.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>The capstone: a hybrid twin with a validation report, a deployed dashboard and a model card, presented live.</p>
+</div><nav class="pager"><a class="prev" href="week-6.html"><small>&larr; Week 6</small>Put the twin to work</a><a class="next" href="index.html"><small>Course overview &rarr;</small>Capstone and outcomes</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

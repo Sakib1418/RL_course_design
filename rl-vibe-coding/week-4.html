@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4: Build the environment · RL for Chemical Engineers</title>
+<meta name="description" content="Turn mass balances and Monod kinetics into a simulator, then into a Gymnasium environment.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 4: Build the environment · RL for Chemical Engineers">
+<meta property="og:description" content="Turn mass balances and Monod kinetics into a simulator, then into a Gymnasium environment.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/week-4.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-rl"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">RL for Chemical Engineers</a> / Week 4</p>
+  <p class="kicker">Week 4 <span class="phase-tag ph-build">Build</span></p>
+  <h1>Build the environment</h1>
+  <p class="lede">Turn mass balances and Monod kinetics into a simulator, then into a Gymnasium environment.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">01 · RL for Chemical Engineers</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>Decisions, rewards and a snake</span></a><a class="" href="week-2.html"><span class="dot ph-play"></span><span><small>Week 2 · Play</small>From snake to bioreactor</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Vibe coding: break it down</span></a><a class="active" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Build the environment</span></a><a class="" href="week-5.html"><span class="dot ph-build"></span><span><small>Week 5 · Build</small>Train the agent</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Verify before you trust</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Ship it and show it</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20RL%20for%20Chemical%20Engineers" data-email="ferdous1418@gmail.com" data-subject="Feedback: RL for Chemical Engineers">Feedback</a></div>
+</div></aside><main class="prose"><p>This week the spec sheet becomes working code. You turn mass balances and Monod kinetics into a fed-batch simulator, then wrap it in the standard interface RL libraries expect.</p>
+<p>For an engineer this is a model you already know how to write on paper. The new part is making it a reliable environment with a reward that measures what you actually want.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Express fed-batch mass balances as a simulator with AI help.</li>
+<li>Wrap a simulator as a Gymnasium environment.</li>
+<li>Check the simulator against hand calculations and balance closure.</li>
+<li>Design a reward that balances titer, constraints and penalties.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Mass balances and Monod&quot;] --&gt; B[&quot;Simulator&quot;]
+    B --&gt; C[&quot;Gymnasium wrapper: reset and step&quot;]
+    C --&gt; D[&quot;Reward and constraints&quot;]
+    D --&gt; E[&quot;Environment ready to train&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-mass-balances-as-code-a-fed-batch-simulator-with-ai">Session 1 · Concept — Mass balances as code: a fed-batch simulator with AI</h3>
+<p>Biomass, substrate, product and volume each have a balance, and the feed enters through the volume term. You assemble them piece by piece, testing each against a hand calculation.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Write the four balances in words before any code</li>
+<li>Prompt for each rate and balance as a separate, tested piece</li>
+<li>Check that total mass closes within tolerance</li>
+</ul>
+<p><strong>Hands-on:</strong> Build the simulator and reproduce a hand-calculated batch.</p>
+<p><strong>You leave with:</strong> A tested fed-batch simulator that runs a full batch.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-wrap-it-as-a-gymnasium-environment">Session 2 · Studio — Wrap it as a Gymnasium environment</h3>
+<p>An RL library needs a standard interface: reset to start a batch and step to apply one feed action. You specify that wrapper and the AI builds it.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Define observation and action spaces from your spec sheet</li>
+<li>Prompt for reset and step, with termination rules</li>
+<li>Run random actions and confirm the environment never crashes</li>
+</ul>
+<p><strong>Hands-on:</strong> Run 50 random-action batches and check each ends cleanly.</p>
+<p><strong>You leave with:</strong> A working Gymnasium environment for the bioreactor.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-reward-design-studio-titer-constraints-penalties">Session 3 · Lab — Reward design studio: titer, constraints, penalties</h3>
+<p>You write a reward that pays for enzyme titer and penalizes overflow, substrate inhibition and low oxygen. Small changes in the reward change the controller you get.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Start with final titer as the only reward and predict how it could go wrong</li>
+<li>Add penalties for constraint violations and compare behavior</li>
+<li>Document every reward term and its units</li>
+</ul>
+<p><strong>Hands-on:</strong> Implement two reward versions and compare them on the same batch.</p>
+<p><strong>You leave with:</strong> A documented reward function and a list of its known weaknesses.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Write a Gymnasium environment class FedBatchEnv in Python.
+It wraps my existing function simulate_step(state, feed_ml).
+Observation: biomass, substrate, product, volume, DO.
+Action: one continuous value from 0 to 50 mL per step.
+reset() starts a batch with these initial conditions: [list].
+step() returns observation, reward, terminated, truncated, info.
+Terminate if volume exceeds 2 L or DO drops below 20 percent.
+Reward: change in product mass, minus 5 if a limit is hit.
+Do not change simulate_step. Add comments with units.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p><strong>Tested environment.</strong> A fed-batch Gymnasium environment with a balance-closure test, a random-action run and a one-page reward document.</p>
+</div><nav class="pager"><a class="prev" href="week-3.html"><small>&larr; Week 3</small>Vibe coding: break it down</a><a class="next" href="week-5.html"><small>Week 5 &rarr;</small>Train the agent</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

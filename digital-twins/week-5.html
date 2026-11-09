@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5: Keeping the twin honest · Digital Twins for Process Engineering</title>
+<meta name="description" content="Uncertainty, state estimation and drift. A twin must say what it does not know.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 5: Keeping the twin honest · Digital Twins for Process Engineering">
+<meta property="og:description" content="Uncertainty, state estimation and drift. A twin must say what it does not know.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/digital-twins/week-5.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-twin">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="active" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-twin"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">Digital Twins for Process Engineering</a> / Week 5</p>
+  <p class="kicker">Week 5 <span class="phase-tag ph-verify">Verify</span></p>
+  <h1>Keeping the twin honest</h1>
+  <p class="lede">Uncertainty, state estimation and drift. A twin must say what it does not know.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">02 · Digital Twins for Process Engineering</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>What a twin is, and what it is not</span></a><a class="" href="week-2.html"><span class="dot ph-build"></span><span><small>Week 2 · Build</small>First principles in code</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Data meets model</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Hybrid twins: learned parts bounded by balances</span></a><a class="active" href="week-5.html"><span class="dot ph-verify"></span><span><small>Week 5 · Verify</small>Keeping the twin honest</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Put the twin to work</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Deploy the twin</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20Digital%20Twins%20for%20Process%20Engineering" data-email="ferdous1418@gmail.com" data-subject="Feedback: Digital Twins for Process Engineering">Feedback</a></div>
+</div></aside><main class="prose"><p>A twin that cannot say what it does not know is a liability. This week you sort parameters into fixed, drifting and live, use a Kalman-style filter to correct the model with each new measurement, and build a validation protocol with a drift alarm.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Classify parameters as fixed, drifting or live, and treat each accordingly.</li>
+<li>Explain the predict, measure, correct loop in plain terms.</li>
+<li>Report uncertainty alongside every prediction.</li>
+<li>Design a validation protocol and a drift alarm.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Predict&quot;] --&gt; B[&quot;Measure&quot;]
+    B --&gt; C[&quot;Correct&quot;]
+    C --&gt; D[&quot;Updated state&quot;]
+    D --&gt; A
+    C --&gt; E[&quot;Drift alarm&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-uncertainty-fixed-drifting-and-live-parameters">Session 1 · Concept — Uncertainty: fixed, drifting and live parameters</h3>
+<p>Not every number in a model deserves the same trust. A tank volume is fixed, a membrane or probe may drift over weeks, and a growth rate changes within a batch.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Three kinds of parameter and how to update each</li>
+<li>Sources of uncertainty: measurement, parameter and model form</li>
+<li>Showing ranges instead of single lines</li>
+</ul>
+<p><strong>Hands-on:</strong> Classify every parameter in your twin and justify each choice.</p>
+<p><strong>You leave with:</strong> A parameter register with a type and an uncertainty for each entry.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-state-estimation-and-data-assimilation-kalman-intuition">Session 2 · Studio — State estimation and data assimilation: Kalman intuition</h3>
+<p>We build intuition for a Kalman filter without the matrix algebra. Predict where the state should be, compare with the sensor, then move toward the sensor in proportion to how much you trust it.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>The trust balance between model and measurement</li>
+<li>Running a filter on a noisy DO or biomass signal</li>
+<li>Estimating a state you cannot measure directly</li>
+</ul>
+<p><strong>Hands-on:</strong> Add a filter to your twin and tune the model-versus-sensor trust.</p>
+<p><strong>You leave with:</strong> A twin that tracks a noisy signal and estimates a hidden state.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-a-validation-protocol-and-a-drift-alarm">Session 3 · Lab — A validation protocol and a drift alarm</h3>
+<p>You write the rules the twin must pass before anyone uses it, then add an alarm that fires when residuals show a persistent bias.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Validation rules: conservation, held-out error and residual behavior</li>
+<li>A simple drift test on a rolling window of residuals</li>
+<li>Injecting drift into a dataset to see if the alarm catches it</li>
+</ul>
+<p><strong>Hands-on:</strong> Inject a slow probe drift and tune the alarm.</p>
+<p><strong>You leave with:</strong> A validation checklist and a working drift alarm.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">Add state estimation to my fed-batch twin.
+Use an extended Kalman filter, but explain it like I am a
+process engineer, not a mathematician.
+
+Measurements: DO every minute, OD600 every hour.
+Hidden states to estimate: biomass X and the kLa parameter.
+
+Show the estimate with a 95 percent band.
+Then write a drift alarm that flags when the rolling mean of
+DO residuals over 30 minutes exceeds 2 percent saturation.
+Test it by adding a slow 0.1 percent per hour probe drift.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p>A twin that reports a prediction with uncertainty bands, a written validation protocol, and a drift alarm tested on injected drift.</p>
+</div><nav class="pager"><a class="prev" href="week-4.html"><small>&larr; Week 4</small>Hybrid twins: learned parts bounded by balances</a><a class="next" href="week-6.html"><small>Week 6 &rarr;</small>Put the twin to work</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20Digital%20Twins%20for%20Process%20Engineering">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

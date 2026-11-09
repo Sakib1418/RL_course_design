@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 1: Decisions, rewards and a snake · RL for Chemical Engineers</title>
+<meta name="description" content="Play before equations. The snake game teaches state, action, reward and policy by hand.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 1: Decisions, rewards and a snake · RL for Chemical Engineers">
+<meta property="og:description" content="Play before equations. The snake game teaches state, action, reward and policy by hand.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/week-1.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-rl"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">RL for Chemical Engineers</a> / Week 1</p>
+  <p class="kicker">Week 1 <span class="phase-tag ph-play">Play</span></p>
+  <h1>Decisions, rewards and a snake</h1>
+  <p class="lede">Play before equations. The snake game teaches state, action, reward and policy by hand.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">01 · RL for Chemical Engineers</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="active" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>Decisions, rewards and a snake</span></a><a class="" href="week-2.html"><span class="dot ph-play"></span><span><small>Week 2 · Play</small>From snake to bioreactor</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Vibe coding: break it down</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Build the environment</span></a><a class="" href="week-5.html"><span class="dot ph-build"></span><span><small>Week 5 · Build</small>Train the agent</span></a><a class="" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Verify before you trust</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Ship it and show it</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20RL%20for%20Chemical%20Engineers" data-email="ferdous1418@gmail.com" data-subject="Feedback: RL for Chemical Engineers">Feedback</a></div>
+</div></aside><main class="prose"><p>This week you play before you calculate. A snake game teaches the four words that run the whole course: state, action, reward and policy. You also meet your AI workspace, because for the next seven weeks it is your pair-programmer.</p>
+<p>For an engineer, the payoff is vocabulary. Once you can name the loop in a game, you can find it in a reactor.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Explain how AI changes who can build engineering software.</li>
+<li>Define state, action, reward and policy using a game you have played.</li>
+<li>Hold a first productive conversation with an AI coding assistant.</li>
+<li>Describe a learning agent as a loop, not a formula.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Agent: the snake&quot;] --&gt;|&quot;Action: turn&quot;| B[&quot;Environment: the board&quot;]
+    B --&gt;|&quot;New state: positions&quot;| A
+    B --&gt;|&quot;Reward: food or wall&quot;| A
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-who-writes-the-code-now-ai-as-an-engineering-tool">Session 1 · Concept — Who writes the code now? AI as an engineering tool</h3>
+<p>AI assistants now write most routine code, which shifts the scarce skill from typing syntax to specifying and verifying. That is the process engineer&rsquo;s home ground.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>What AI coding assistants do well, and where they fail quietly</li>
+<li>Why a clear specification beats programming skill</li>
+<li>A live demo: a plain-English request becomes a running program</li>
+</ul>
+<p><strong>Hands-on:</strong> Ask an assistant to explain one unit operation you know, then critique its answer.</p>
+<p><strong>You leave with:</strong> A realistic sense of what the AI can and cannot be trusted to do.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-meet-the-snake-state-action-reward-policy">Session 2 · Studio — Meet the snake: state, action, reward, policy</h3>
+<p>You play the snake game by hand, then describe your own strategy in words. That description is a policy, and the score is the reward.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Play rounds and write down what you looked at before each move</li>
+<li>Name the state, the actions and the reward in your own words</li>
+<li>Compare a random policy, a greedy policy and your own</li>
+</ul>
+<p><strong>Hands-on:</strong> Play five rounds, then write your strategy as three plain rules.</p>
+<p><strong>You leave with:</strong> A one-page glossary of the four RL terms, in your own words.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-your-ai-workspace-first-conversation-with-a-coding-assistant">Session 3 · Lab — Your AI workspace: first conversation with a coding assistant</h3>
+<p>You set up a free assistant and a Colab notebook, then run your first piece of AI-written code. Nothing is installed on your machine.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Open Google Colab and connect an assistant account</li>
+<li>Ask the assistant to explain a short snippet line by line</li>
+<li>Start a prompt log that you will keep all seven weeks</li>
+</ul>
+<p><strong>Hands-on:</strong> Run one AI-written cell and explain what it printed.</p>
+<p><strong>You leave with:</strong> A working workspace and the first entries in your prompt log.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">I am a chemical engineer with no coding background.
+Explain reinforcement learning using the snake game.
+Use these four words and define each in one sentence:
+state, action, reward, policy.
+Then show me where each one would appear if the
+&quot;snake&quot; were a feed pump on a fed-batch bioreactor.
+Keep it under 200 words and avoid jargon.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p><strong>Snake notes and prompt log.</strong> A one-page description of your snake strategy using state, action, reward and policy, plus your first prompt-log entries.</p>
+</div><nav class="pager"><a class="prev" href="syllabus.html"><small>&larr; Syllabus</small>Course schedule</a><a class="next" href="week-2.html"><small>Week 2 &rarr;</small>From snake to bioreactor</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>

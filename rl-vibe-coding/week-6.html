@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 6: Verify before you trust · RL for Chemical Engineers</title>
+<meta name="description" content="A test ladder from units to closed loop. Beat the recipe, survive a faulty pump.">
+<meta name="author" content="Sakib Ferdous">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Week 6: Verify before you trust · RL for Chemical Engineers">
+<meta property="og:description" content="A test ladder from units to closed loop. Beat the recipe, survive a faulty pump.">
+<meta property="og:image" content="https://sakib1418.github.io/RL_course_design/assets/img/preview.png">
+<meta property="og:url" content="https://sakib1418.github.io/RL_course_design/rl-vibe-coding/week-6.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="accent-rl">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="../index.html"><img src="../assets/img/favicon.svg" alt="" width="30" height="30">
+    <span><strong>ChemE × AI</strong><em>Course Series</em></span></a>
+  <nav class="nav-links" aria-label="Courses"><a class="active" href="../rl-vibe-coding/index.html"><span class="n">01</span>RL &amp; Vibe Coding</a><a class="" href="../digital-twins/index.html"><span class="n">02</span>Digital Twins</a><a class="" href="../agentic-ai/index.html"><span class="n">03</span>Agentic AI</a><a href="../index.html#instructor">Instructor</a></nav>
+  <a class="btn small primary nav-cta js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20ChemE%20x%20AI%20course%20series" data-email="ferdous1418@gmail.com" data-subject="Feedback: ChemE x AI course series">Feedback</a>
+</div></header>
+<div id="content">
+
+<section class="sub-hero accent-rl"><div class="wrap">
+  <p class="crumbs"><a href="../index.html">Course series</a> / <a href="index.html">RL for Chemical Engineers</a> / Week 6</p>
+  <p class="kicker">Week 6 <span class="phase-tag ph-verify">Verify</span></p>
+  <h1>Verify before you trust</h1>
+  <p class="lede">A test ladder from units to closed loop. Beat the recipe, survive a faulty pump.</p>
+</div></section><div class="wrap doc-grid">
+<aside class="sidebar"><div class="side-in">
+  <a class="side-course" href="index.html">01 · RL for Chemical Engineers</a>
+  <nav><a class="" href="syllabus.html">Syllabus &amp; schedule</a><a class="" href="week-1.html"><span class="dot ph-play"></span><span><small>Week 1 · Play</small>Decisions, rewards and a snake</span></a><a class="" href="week-2.html"><span class="dot ph-play"></span><span><small>Week 2 · Play</small>From snake to bioreactor</span></a><a class="" href="week-3.html"><span class="dot ph-build"></span><span><small>Week 3 · Build</small>Vibe coding: break it down</span></a><a class="" href="week-4.html"><span class="dot ph-build"></span><span><small>Week 4 · Build</small>Build the environment</span></a><a class="" href="week-5.html"><span class="dot ph-build"></span><span><small>Week 5 · Build</small>Train the agent</span></a><a class="active" href="week-6.html"><span class="dot ph-verify"></span><span><small>Week 6 · Verify</small>Verify before you trust</span></a><a class="" href="week-7.html"><span class="dot ph-deploy"></span><span><small>Week 7 · Deploy</small>Ship it and show it</span></a></nav>
+  <div class="side-cta"><p>Slides, notebooks and the instructor guide for this course are available on request.</p>
+  <a class="btn small primary js-feedback" href="mailto:ferdous1418@gmail.com?subject=Feedback%3A%20RL%20for%20Chemical%20Engineers" data-email="ferdous1418@gmail.com" data-subject="Feedback: RL for Chemical Engineers">Feedback</a></div>
+</div></aside><main class="prose"><p>This week you decide whether to trust the controller. You climb a test ladder from unit checks to full closed-loop runs, compare the agent with an operator&rsquo;s recipe, and stress it with a faulty pump.</p>
+<p>For an engineer this is the week that matters most. A controller that has not been verified is a hypothesis, however good the training curve looks.</p>
+<h2 id="learning-goals">Learning goals</h2>
+<ul>
+<li>Build a test ladder from unit tests to closed-loop benchmarks.</li>
+<li>Benchmark an agent fairly against a fixed recipe.</li>
+<li>Stress test with a fault and report the degradation.</li>
+<li>Say when not to use RL, and why.</li>
+</ul>
+<div class="figure-diagram"><pre class="mermaid">flowchart TD
+    A[&quot;Units and conversions&quot;] --&gt; B[&quot;Mass balance closure&quot;]
+    B --&gt; C[&quot;Sanity bounds on states&quot;]
+    C --&gt; D[&quot;Benchmark against the recipe&quot;]
+    D --&gt; E[&quot;Fault test: faulty pump&quot;]
+    E --&gt; F[&quot;Go or no-go decision&quot;]
+</pre></div>
+<h2 id="sessions">Sessions</h2>
+<div class="session">
+<h3 id="session-1-concept-the-test-ladder-units-balances-sanity-bounds">Session 1 · Concept — The test ladder: units, balances, sanity bounds</h3>
+<p>Each rung checks something the next rung relies on. Units first, then balance closure, then physical bounds, so a failure points to its cause.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Why a high reward can hide a broken simulator</li>
+<li>Writing balance-closure and non-negativity checks</li>
+<li>Asking the AI to generate tests, then reviewing them critically</li>
+</ul>
+<p><strong>Hands-on:</strong> Add five tests to your environment and run them all.</p>
+<p><strong>You leave with:</strong> A test suite that runs in one click.</p>
+</div>
+<div class="session">
+<h3 id="session-2-studio-benchmark-against-the-recipe-stress-test-with-a-faulty-pump">Session 2 · Studio — Benchmark against the recipe; stress test with a faulty pump</h3>
+<p>You compare agent and recipe over many seeded batches, then degrade the pump with a delay or a stuck valve and measure what happens to titer.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Define a fair benchmark: same seeds, same initial conditions</li>
+<li>Report mean titer and spread, not a single best batch</li>
+<li>Inject a pump fault and compare agent and recipe</li>
+</ul>
+<p><strong>Hands-on:</strong> Run the benchmark and the faulty-pump test, then tabulate the results.</p>
+<p><strong>You leave with:</strong> A benchmark table with a fault scenario.</p>
+</div>
+<div class="session">
+<h3 id="session-3-lab-safety-constraints-and-when-not-to-use-rl">Session 3 · Lab — Safety, constraints, and when not to use RL</h3>
+<p>Some problems should not be handed to a learned policy. You write down the conditions under which you would not deploy your controller.</p>
+<p><strong>In class</strong></p>
+<ul>
+<li>Hard constraints versus soft penalties</li>
+<li>Operator override, fallback recipes and safe action limits</li>
+<li>Cases where PID, MPC or a recipe is the better answer</li>
+</ul>
+<p><strong>Hands-on:</strong> Write a one-page deployment safety note for your controller.</p>
+<p><strong>You leave with:</strong> A written go or no-go criterion for your controller.</p>
+</div>
+<h2 id="prompt-of-the-week">Prompt of the week</h2>
+<pre><code class="language-text">I have a trained PPO agent and a fixed operator recipe
+for my FedBatchEnv.
+Write a benchmark script that runs both over 50 seeded batches
+with identical initial conditions.
+Report mean and standard deviation of final titer for each.
+Then add a fault scenario: the feed pump delivers only
+70 percent of the commanded volume after hour 12.
+Run both again and print a table: nominal versus faulty,
+agent versus recipe.
+Flag any batch where a safety limit was violated.
+</code></pre>
+<h2 id="deliverable">Deliverable</h2>
+<div class="callout tip">
+<p><strong>Verification report.</strong> A benchmark table of agent versus recipe, nominal and faulty pump, plus a go or no-go statement with your reasoning.</p>
+</div><nav class="pager"><a class="prev" href="week-5.html"><small>&larr; Week 5</small>Train the agent</a><a class="next" href="week-7.html"><small>Week 7 &rarr;</small>Ship it and show it</a></nav></main></div><section class="band request-band" id="request"><div class="wrap"><div class="request">
+<div>
+<p class="eyebrow">Full materials on request</p>
+<h2 id="the-complete-course-package-is-ready-to-share">The complete course package is ready to share</h2>
+<p>Session slide decks, browser notebooks, the instructor guide and the capstone briefs are shared with collaborating faculty, departments and industry partners. Write to ask for a walkthrough, a pilot offering, or the materials for one course.</p>
+<p><a class="btn light" href="mailto:ferdous1418@gmail.com?subject=Materials%20request%3A%20RL%20for%20Chemical%20Engineers">Request the materials</a></p>
+<p class="contact-line">Sakib Ferdous · <a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a> · <a href="tel:+15156867280">+1 515 686 7280</a></p>
+</div>
+<ul>
+<li>Slide decks for all 21 sessions</li>
+<li>Browser notebooks (Google Colab)</li>
+<li>Instructor guide and timing notes</li>
+<li>Prompt libraries for each lab</li>
+<li>Rubrics and capstone briefs</li>
+<li>Simulators and datasets</li>
+</ul>
+</div></div></section>
+</div>
+
+<footer class="site-footer"><div class="wrap foot-grid">
+  <div><p class="foot-brand">ChemE × AI Course Series</p>
+  <p>Three seven-week courses for chemical and process engineers. Designed by Sakib Ferdous, Ph.D.; co-developed with Dr. Nigel F. Reuel, Iowa State University.</p></div>
+  <div><p class="foot-h">Courses</p><ul><li><a href="../rl-vibe-coding/index.html">Reinforcement Learning for Chemical Engineers</a></li><li><a href="../digital-twins/index.html">Digital Twins for Process Engineering</a></li><li><a href="../agentic-ai/index.html">Agentic AI for Process Operations</a></li></ul></div>
+  <div><p class="foot-h">Contact</p><ul>
+    <li><a href="mailto:ferdous1418@gmail.com">ferdous1418@gmail.com</a></li>
+    <li><a href="tel:+15156867280">+1 515 686 7280</a></li>
+    <li><a href="https://www.linkedin.com/in/sakib-ferdous">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=LM1_PDYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0001-7396-9830">ORCID</a> · <a href="https://github.com/Sakib1418">GitHub</a></li></ul></div>
+</div><div class="wrap foot-base">© 2026 Sakib Ferdous · Full slide decks, notebooks and instructor guides available on request · Built with AI-assisted (vibe) coding</div></footer>
+<script type="module" src="../assets/js/site.js"></script>
+</body>
+</html>
